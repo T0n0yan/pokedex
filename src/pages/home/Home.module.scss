@@ -1,0 +1,10 @@
+@import "../../styles/fonts.scss";
+@import "../../styles/color.scss";
+@import "../../styles/variables.scss";
+
+.title {
+    font-family: $main_font;
+    color: $main_teal;
+    font-size: $font-size-48;
+    text-align: center;
+}

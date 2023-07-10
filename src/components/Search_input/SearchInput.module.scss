@@ -1,0 +1,11 @@
+@import "src/styles/color.scss";
+.body {
+    padding: 3px 6px;
+    border-color: $index_grey;
+    &:focus {
+        border-color: $index_grey;
+    }
+}
+.button {
+    color: yellow;
+}
