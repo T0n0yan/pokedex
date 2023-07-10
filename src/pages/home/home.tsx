@@ -11,26 +11,35 @@ const Home: FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const [searchValue, setSearchValue] = useState('');
 
     const handleSearch = (value: string) => {
         console.log('Searched value:', value);
     };
-    const pokemonData = useAppSelector(state => state.pokemonReducer.pokemonsData)
-    console.log(pokemonData);
+    const pokemonData = useAppSelector(state => state.pokemonReducer.pokemonInfo)
 
     useEffect(() => {
         dispatch(fetchAllPokemons())
     }, [])
     return (
         <PageWrapper>
-            <>
-                <h1 className={styles.title}> Pokédex </h1>
-                <SearchInput width="300px" handleSearch={handleSearch} />
-                {pokemonData && pokemonData.results.map((el, index) => {
-                    return <Card title={el.name} key={index} />
-                })}
-            </>
+            <h1 className={styles.title}> Pokédex </h1>
+            <SearchInput width="300px" handleSearch={handleSearch} />
+            
+            <div className={styles.container}>
+                {pokemonData ? pokemonData.map(el => {
+                    console.log(el);
+                    return (
+                        <Card
+                            url={el.sprites.other?.["official-artwork"].front_default}
+                            title={el.name}
+                            hashId={`#${el.id.toString().padStart(3, "0")}`}
+                            key={el.id}
+                            types={el.types}
+                        />
+                    )
+                }) : "Hello World"}
+
+            </div>
         </PageWrapper>
     )
 }

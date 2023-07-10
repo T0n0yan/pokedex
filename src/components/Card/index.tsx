@@ -1,21 +1,31 @@
 import { FC } from 'react';
 import { Card } from 'antd';
 import { TCardProps } from './type';
-
+import styles from './Cards.module.scss'
 const { Meta } = Card;
 
-const CardComponent: FC<TCardProps> = ({ url, title, hashId, type }) => (
+const CardComponent: FC<TCardProps> = ({ url, title, hashId, types }) => {
+  const capitalizedTitle = title.charAt(0).toUpperCase() + title.slice(1);
+  return (
 
-  <Card
-    hoverable
-    style={{ width: 240 }}
-    // cover={< img alt="pokemon Pic " src={url} />}
-  >
-    <Meta title={title} description="Pokemon Card" />
-    <h3>{title}</h3>
-    {/* <p>{hashId}</p>
-    <p>{type}</p> */}
-  </Card>
-);
+    <Card
+      hoverable
+      className={styles.card}
+      cover={
+        <div className={styles.pokemon_img_container}>
+          <img className={styles.pokemon_img} alt="pokemon Picture" src={url} />
+        </div>
+      }
+    >
+      {/* <Meta title={title} /> */}
+      <h3 className={styles.pokemon_name}>{capitalizedTitle}</h3>
+      <p className={styles.id}>{hashId}</p>
+      {types.map((el => {
+        return <span className={styles.pokemon_type}>{el.type.name}</span>
+      }))}
+    </Card>
+  )
+}
+
 
 export default CardComponent;

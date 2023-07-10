@@ -1,7 +1,8 @@
+import { PokemonTypes } from "store/reducers/types"
 
 export type TCardProps = {
-    url?: string
+    url: string | undefined
     title: string
-    hashId?: string
-    type?: string
+    hashId: string
+    types: PokemonTypes[]
 }
