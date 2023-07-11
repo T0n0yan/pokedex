@@ -1,24 +1,27 @@
-import {FC} from "react";
-import type {TFilteredInput} from "./types";
-import {Select} from 'antd';
+import { FC } from "react";
+import { Select } from 'antd';
 import styles from './FilterInput.module.scss'
 
-const FilteredInput: FC<TFilteredInput> = ({ handleSort}) => {
-    const sort = (value: string) => {
-        handleSort(value); // Call the handleSort function passed as a prop
-    };
 
+export type TFilteredInput = {
+    handleSort: (value: string) => void
+}
+
+const FilteredInput: FC<TFilteredInput> = ({ handleSort }) => {
+    const sort = (value: string) => {
+        handleSort(value);
+    };
     return (
         <Select
             defaultValue="Lowest to Highest"
             className={styles.input}
-            style={{width: "20%"}}
+            style={{ width: "25%" }}
             onChange={sort}
             options={[
-                {value: 'A-Z', label: 'A-Z'},
-                {value: 'Z-A', label: 'Z-A'},
-                {value: 'Lowest To Highest Number', label: 'Lowest to Highest'},
-                {value: 'Highers To Lowest Number', label: 'Highest to Lowest'},
+                { value: 'A-Z', label: 'A-Z' },
+                { value: 'Z-A', label: 'Z-A' },
+                { value: 'Lowest To Highest Number', label: 'Lowest to Highest' },
+                { value: 'Highers To Lowest Number', label: 'Highest to Lowest' },
             ]}
         />
     );

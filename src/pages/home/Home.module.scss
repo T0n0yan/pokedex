@@ -4,41 +4,67 @@
 @import "../../styles/mixin.scss";
 
 .title {
-    font-family: $main_font;
-    color: $main_teal;
-    font-size: $font-size-48;
-    text-align: center;
+    font-family : $main_font;
+    color       : $main_teal;
+    font-size   : $font-size-48;
+    text-align  : center;
+    margin      : 20px 0 60px 0;
 }
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display         : flex;
+    flex-wrap       : wrap;
+    justify-content : space-between;
+
     .pokemonItem {
-        width: 19%;
-        margin: 0 auto;
-        margin: 5px 0;
-        text-decoration: none;
+        width           : 19%;
+        margin          : 5px 0;
+        text-decoration : none;
         @include screen-max-width-1024 {
-            width: 24%;
-            padding: 10px;
+            width   : 24%;
+            padding : 10px;
         }
         @include screen-max-width-767 {
-            width: 32%;
+            width : 32%;
         }
         @include screen-max-width-576 {
-            width: 48%;
+            width : 48%;
         }
         @include screen-max-width-440 {
-            width: 100%;
+            width : 100%;
         }
     }
 }
-.inputsContainer {
-    width: 100%;
+.inputs_container {
+    width           : 100%;
+    display         : flex;
+    justify-content : space-between;
+    @include screen-max-width-991 {
+        width : 100%;
+    }
     @include screen-max-width-767 {
-        width: 100% !important;
         input {
-            width: 100%;
+            width : 100%;
+        }
+    }
+
+    .inputs {
+        width : 70%;
+        @include screen-max-width-991 {
+            width : 100%;
+        }
+    }
+
+    .per_page {
+        width           : 19%;
+        display         : flex;
+        align-items     : center;
+        justify-content : end;
+        @include screen-max-width-991 {
+            display : none;
+        }
+
+        .per_page_text {
+            margin : 0 5px 4px 0;
         }
     }
 }

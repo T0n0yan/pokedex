@@ -1,10 +1,12 @@
-import React, {FC} from 'react';
-import type {TLoader} from "./types";
-import {Spin} from 'antd';
+import React, { FC } from 'react';
+import { Spin } from 'antd';
+export type TLoader = {
+    show: boolean
+}
 
 
 const Loader: FC<TLoader> = () => {
-    return <Spin/>
+    return <Spin />
 
 };
 

@@ -1,3 +1,12 @@
+export interface RootState {
+    pokemonsData: PokemonData | null;
+    loading: boolean,
+    error: string | undefined,
+    pokemonInfo: PokemonInfo[] | null,
+    singlePokemon: PokemonInfo | null
+    speciesUrl: SinglePokemonData | null
+    typesList: PokemonData | null
+}
 export interface Pokemon {
     name: string;
     url: string;
@@ -10,15 +19,6 @@ export interface PokemonData {
     next: string | null;
     previous: string | null;
     results: Pokemon[];
-}
-export interface RootState {
-    pokemonsData: PokemonData | null;
-    loading: boolean,
-    error: string | undefined,
-    pokemonInfo: PokemonInfo[] | null,
-    singlePokemon: PokemonInfo | null
-    speciesUrl: SinglePokemonData | null
-    typesList: PokemonData | null
 }
 
 export interface PokemonAbilites {
@@ -33,7 +33,7 @@ export interface PokemonGameIndicaes {
 
 export interface PokemonMoves {
     move: Pokemon,
-    version_group_details: any[]
+    // version_group_details: any[]
 }
 
 export interface FlavorTextEntry {
@@ -128,9 +128,9 @@ export interface SinglePokemonData {
     color: Pokemon
     egg_groups: Pokemon[]
     evolution_chain: PokemonUrl
-    evolves_from_species: any
+    // evolves_from_species: any
     flavor_text_entries: FlavorTextEntry[]
-    form_descriptions: any[]
+    // form_descriptions: any[]
     forms_switchable: boolean
     gender_rate: number
     genera: Genera[]

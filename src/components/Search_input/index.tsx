@@ -1,9 +1,11 @@
 import { FC } from 'react'
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import type { TInputSearch } from './type';
 import styles from './SearchInput.module.scss'
 
+export type TInputSearch = {
+    handleSearch: (value: string) => void
+}
 
 const SearchInput: FC<TInputSearch> = ({ handleSearch }) => {
 

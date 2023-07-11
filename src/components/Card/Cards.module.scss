@@ -3,32 +3,54 @@
 @import "../../styles/mixin.scss";
 
 .card {
-    width: 100%;
-    font-family: $main_font;
-    padding: 15px;
-    border-radius: 0;
+    width         : 100%;
+    font-family   : $main_font;
+    padding       : 15px;
+    border-radius : 0;
+    animation     : pokemonItem 0.5ms ease-in-out ;
+
+    &:hover {
+        transition : transform 0.5ms ease-in-out;
+    }
+
     .pokemon_img_container {
-        background: $image_background;
-        display: flex;
-        justify-content: center;
-        border-radius: 10px !important;
+        background      : $image_background;
+        display         : flex;
+        justify-content : center;
+        border-radius   : 10px !important;
+
         .pokemon_img {
-            width: 100%;
-            height: 100%;
+            width  : 100%;
+            height : 100%;
             @include screen-max-width-440 {
-                width: 200px;
-                height: 200px;
+                width  : 200px;
+                height : 200px;
             }
         }
     }
 
     .pokemon_name {
-        color: $title_dark_blue;
+        color : $title_dark_blue;
     }
+
     .id {
-        color: $index_grey;
+        color : $index_grey;
     }
+
     .pokemon_type {
-        color: $type_grey;
+        color : $type_grey;
     }
 }
+
+@keyframes pokemonItem {
+    0% {
+        transform : translateY(0px);
+    }
+    50% {
+        transform : translateY(-10px);
+    }
+    100% {
+        transform : translateY(0px);
+    }
+}
+

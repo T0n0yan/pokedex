@@ -1,0 +1,16 @@
+@import "src/styles/mixin.scss";
+
+.body {
+    @include screen-max-width-991 {
+        width: 50%;
+        margin: 15px 0;
+    }
+    .select {
+        margin: 0 15px;
+        width: 150px;
+        @include screen-max-width-991 {
+            width: 350px;
+            margin: 0;
+        }
+    }
+}

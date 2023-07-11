@@ -92,7 +92,7 @@ const pokemonSlice = createSlice({
             })
 
 
-            .addCase(fetchSpeciesData.pending, (state, action) => {
+            .addCase(fetchSpeciesData.pending, (state) => {
                 state.loading = true
                 state.error = undefined
             })
@@ -106,7 +106,7 @@ const pokemonSlice = createSlice({
             })
 
 
-            .addCase(fetchAlltypes.pending, (state, action) => {
+            .addCase(fetchAlltypes.pending, (state) => {
                 state.loading = true
                 state.error = undefined
             })
@@ -118,7 +118,6 @@ const pokemonSlice = createSlice({
                 state.loading = false
                 state.error = action.error.message
             })
-
     },
 })
 export const { actions } = pokemonSlice

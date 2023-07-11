@@ -1,11 +1,13 @@
-@import "../../styles/color.scss";
-@import "../../styles/fonts.scss";
-@import "../../styles/variables.scss";
+@import "src/styles/mixin.scss";
+@import "src/styles/variables.scss";
+@import "src/styles/fonts.scss";
+@import "src/styles/color.scss";
 
 .input {
-    border-color: $index_grey !important;
-    place-content: "asdasda";
-    width: 200px;
+    width: 300px;
+    @include screen-max-width-991 {
+        width: 100%;
+    }
 }
 .button {
     padding: 8px;

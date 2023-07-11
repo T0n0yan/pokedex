@@ -47,29 +47,29 @@ const PokemonItem: FC = () => {
                             <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, " ").replace(/\f/g, "").trim()}</p>
                         </div>
                         <div className={styles.pokemin_info}>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Height</p>
                                 <p>{calcualteHeight(singlePokemon.height)}</p>
                             </div>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Weight</p>
                                 <p>{calculateWeight(singlePokemon.weight)}</p>
                             </div>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Category</p>
                                 <p>{spacesUrlData.genera[7].genus.split(" ")[0]}</p>
                             </div>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Types</p>
                                 {singlePokemon.types.map((el, index) => {
                                     return <p key={index}>{el.type.name}</p>
                                 })}
                             </div>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Ability</p>
                                 <p>{singlePokemon.abilities[0].ability.name}</p>
                             </div>
-                            <div>
+                            <div className={styles.pokemon_each_info}>
                                 <p>Gender</p>
                                 {spacesUrlData.gender_rate >= 1
                                     ? <div style={{ display: "flex", flexDirection: "column" ,width:"100%"}}><span>male</span><span>female</span></div>
@@ -78,8 +78,8 @@ const PokemonItem: FC = () => {
                                         : <p>none</p>
                                 }
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
 
