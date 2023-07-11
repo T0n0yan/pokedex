@@ -18,6 +18,7 @@ export interface RootState {
     pokemonInfo: PokemonInfo[] | null,
     singlePokemon: PokemonInfo | null
     speciesUrl: SinglePokemonData | null
+    typesList: PokemonData | null
 }
 
 export interface PokemonAbilites {

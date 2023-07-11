@@ -3,12 +3,12 @@ import styles from './Home.module.scss';
 import SearchInput from 'components/Search_input/index';
 import PageWrapper from "layout/Page_wrapper";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { fetchAllPokemons } from "store/reducers/pokemonSlice";
+import { fetchAllPokemons, fetchAlltypes } from "store/reducers/pokemonSlice";
 import FilteredInput from 'components/Filter_input/index'
 import Pagination from "components/Pagination";
-import Loader from "../../components/Loader";
 import CardComponent from "../../components/Card";
 import { Link } from "react-router-dom";
+import TypesInput from '../../components/Types_input';
 
 const Home: FC = () => {
     const dispatch = useAppDispatch();
@@ -18,7 +18,11 @@ const Home: FC = () => {
 
     useEffect(() => {
         dispatch(fetchAllPokemons());
+        dispatch(fetchAlltypes())
     }, []);
+
+
+    const typeList = useAppSelector(state => state.pokemonReducer.typesList)
 
     const handleSearch = (value: string) => {
         setSearchPokemon(value);
@@ -53,14 +57,16 @@ const Home: FC = () => {
         }
         return 0;
     });
+    console.log(typeList);
+
 
     return (
         <PageWrapper>
             <h1 className={styles.title}>Pokédex</h1>
             <div className={styles.inputsContainer}>
                 <SearchInput handleSearch={handleSearch} />
+                <TypesInput  handleType={typeList} />
                 <FilteredInput handleSort={handleSort} />
-                <Pagination page={3} />
             </div>
             <div className={styles.container}>
                 {filteredData ? (
@@ -73,10 +79,11 @@ const Home: FC = () => {
                                 types={el.types}
                             />
                         </Link>
-
                     ))
                 ) : <p className={styles.emptyList}>Nothing was found</p>}
             </div>
+            <Pagination page={3} />
+
         </PageWrapper >
     );
 };

@@ -1,8 +1,10 @@
 import { FC, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { fetchSinglePokemonById, fetchSpeciesData } from "store/reducers/pokemonSlice";
 import PageWrapper from 'layout/Page_wrapper';
+import styles from './PokemonTypes.module.scss'
+
 
 const PokemonItem: FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -16,8 +18,6 @@ const PokemonItem: FC = () => {
             dispatch(fetchSpeciesData(url))
         }
     }, [id, url])
-
-
     const calcualteHeight = (pokemonHeight: number): string => {
         const meters = pokemonHeight * 0.1;
         const feet = meters * 3.28084;
@@ -33,39 +33,56 @@ const PokemonItem: FC = () => {
         const roundedPounds = pounds.toFixed(1);
         return `${roundedKilograms}kg (${roundedPounds}lbs)`
     }
-
-    console.log(spacesUrlData);
-    // console.log(spacesUrlData)
     return singlePokemon && spacesUrlData && (
         <PageWrapper>
+            <Link to='/' className={styles.link}>← Explore more Pokémon</Link>
             <div>
                 <h1>{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)} #{singlePokemon.id.toString().padStart(3, "0")}</h1>
-                <img src={singlePokemon.sprites.other?.["official-artwork"].front_default} alt="" />
-                <div>
-                    <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, " ").replace(/\f/g, "").trim()}</p>
-                </div>
-                <div>
-                    <p>Height</p>
-                    <p>{calcualteHeight(singlePokemon.height)}</p>
-                </div>
-                <div>
-                    <p>Weight</p>
-                    <p>{calculateWeight(singlePokemon.weight)}</p>
-                </div>
-                <div>
-                    <p>Category</p>
-                    {/* <p>{singlePokemon}</p> */}
+                <div className={styles.img_description_cont}>
+
+                    <img className={styles.img} src={singlePokemon.sprites.other?.["official-artwork"].front_default} alt="" />
+
+                    <div className={styles.description_cont}>
+                        <div>
+                            <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, " ").replace(/\f/g, "").trim()}</p>
+                        </div>
+                        <div className={styles.pokemin_info}>
+                            <div>
+                                <p>Height</p>
+                                <p>{calcualteHeight(singlePokemon.height)}</p>
+                            </div>
+                            <div>
+                                <p>Weight</p>
+                                <p>{calculateWeight(singlePokemon.weight)}</p>
+                            </div>
+                            <div>
+                                <p>Category</p>
+                                <p>{spacesUrlData.genera[7].genus.split(" ")[0]}</p>
+                            </div>
+                            <div>
+                                <p>Types</p>
+                                {singlePokemon.types.map((el, index) => {
+                                    return <p key={index}>{el.type.name}</p>
+                                })}
+                            </div>
+                            <div>
+                                <p>Ability</p>
+                                <p>{singlePokemon.abilities[0].ability.name}</p>
+                            </div>
+                            <div>
+                                <p>Gender</p>
+                                {spacesUrlData.gender_rate >= 1
+                                    ? <div style={{ display: "flex", flexDirection: "column" ,width:"100%"}}><span>male</span><span>female</span></div>
+                                    : spacesUrlData.gender_rate === 0
+                                        ? <p>male</p>
+                                        : <p>none</p>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div>
-                    <p>Types</p>
-                    <p>{singlePokemon.types[0].type.name}</p>
-                    <p>{singlePokemon.types[1].type.name}</p>
-                </div>
-                <div>
-                    <p>Ability</p>
-                    <p>{singlePokemon.abilities[0].ability.name}</p>
-                </div>
             </div>
         </PageWrapper>
 

@@ -6,27 +6,13 @@
     border-color: $index_grey !important;
     place-content: "asdasda";
     width: 200px;
-
-    input {
-        border-radius: 0;
-        padding: 5px 10px;
-        font-family: $main_font;
-    }
-
-    &:focus {
-        border-color: $index_grey;
-    }
 }
 .button {
-    padding: 9px;
+    padding: 8px;
+    border-radius: 0 5px 5px 0;
     background-color: $main_teal;
     border: none;
     color: $white;
     cursor: pointer;
     transition: $transition;
-
-    &:hover {
-        transform: scale(1.1);
-        transition: $transition;
-    }
 }

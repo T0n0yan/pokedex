@@ -1,0 +1,48 @@
+@import "src/styles/mixin.scss";
+@import "src/styles/color.scss";
+@import "src/styles/fonts.scss";
+@import "src/styles/variables.scss";
+
+.link {
+    text-decoration: none;
+    color: $main_teal;
+    font-size: $font-size-18;
+    padding: 5px 10px;
+    transition: $transition;
+    &:hover {
+        background-color: $image_background;
+        transition: $transition;
+    }
+}
+
+.img_description_cont {
+    display: flex;
+    justify-content: space-between;
+    .img {
+        width: 400px;
+        background-color: $image_background;
+        padding: 30px;
+        border-radius: 15px;
+    }
+    .description_cont {
+        width: 45%;
+        .pokemin_info {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid red;
+            justify-content: space-between;
+            div {
+                width: 33%;
+                border: 1px solid red;
+                text-align: center;
+                p {
+                    &:first-child {
+                        color: $main_teal;
+                        font-size: $font-size-18;
+                    }
+                }
+            }
+        }
+    }
+}

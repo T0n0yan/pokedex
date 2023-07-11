@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { Pokemon, PokemonInfo, RootState } from "../reducers/types";
+import { Pokemon, PokemonData, RootState } from "../reducers/types";
 import axios from 'axios'
 
 const initialState: RootState = {
@@ -9,7 +9,9 @@ const initialState: RootState = {
     pokemonInfo: null,
     singlePokemon: null,
     speciesUrl: null,
+    typesList: null,
 }
+
 
 export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async () => {
     try {
@@ -42,6 +44,14 @@ export const fetchSpeciesData = createAsyncThunk("pokemon/fetchSpaciesData", asy
         return response.data
     } catch (err) {
         console.error("Error Species url not exsist", err)
+    }
+})
+export const fetchAlltypes = createAsyncThunk("pokemons/type", async () => {
+    try {
+        const response = await axios.get("https://pokeapi.co/api/v2/type")
+        return response.data
+    } catch (err) {
+        console.error("Types error ", err)
     }
 })
 
@@ -93,6 +103,20 @@ const pokemonSlice = createSlice({
             .addCase(fetchSpeciesData.rejected, (state, actions) => {
                 state.loading = false
                 state.error = actions.error.message
+            })
+
+
+            .addCase(fetchAlltypes.pending, (state, action) => {
+                state.loading = true
+                state.error = undefined
+            })
+            .addCase(fetchAlltypes.fulfilled, (state, action) => {
+                state.loading = false
+                state.typesList = action.payload
+            })
+            .addCase(fetchAlltypes.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.error.message
             })
 
     },
