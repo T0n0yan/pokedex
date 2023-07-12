@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { Pokemon, PokemonData, RootState } from "../reducers/types";
+import { Pokemon, PokemonUniqeType, RootState } from "../reducers/types";
 import axios from 'axios'
 
 const initialState: RootState = {
@@ -10,6 +10,7 @@ const initialState: RootState = {
     singlePokemon: null,
     speciesUrl: null,
     typesList: null,
+    uniqeIdPokemon: null,
 }
 
 
@@ -55,6 +56,24 @@ export const fetchAlltypes = createAsyncThunk("pokemons/type", async () => {
     }
 })
 
+
+export const fetchPokemonByType = createAsyncThunk("pokemon/unique/type", async (typeUrl: string) => {
+    try {
+        const response = await axios.get(typeUrl)
+        const uniqePokemonTypes = response.data.pokemon
+        console.log("uniqe from promise", uniqePokemonTypes)
+        if (uniqePokemonTypes) {
+            const pokeomUniqeType = uniqePokemonTypes.map(async (pokemon: PokemonUniqeType) => {
+                const pokemonResponse = await axios.get(pokemon.pokemon.url)
+                return pokemonResponse.data
+            })
+            const pokemonsType = await Promise.all(pokeomUniqeType)
+            return pokemonsType
+        }
+    } catch (err) {
+        console.error("Error pokemon unique type", err)
+    }
+})
 const pokemonSlice = createSlice({
     name: "Pokemon",
     initialState,
@@ -117,6 +136,20 @@ const pokemonSlice = createSlice({
             .addCase(fetchAlltypes.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
+            })
+
+
+            .addCase(fetchPokemonByType.pending, (state) => {
+                state.loading = true
+                state.error = undefined
+            })
+            .addCase(fetchPokemonByType.fulfilled, (state, action) => {
+                state.loading = false
+                state.uniqeIdPokemon = action.payload!
+            })
+            .addCase(fetchPokemonByType.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.error.message;
             })
     },
 })

@@ -6,10 +6,15 @@ export interface RootState {
     singlePokemon: PokemonInfo | null
     speciesUrl: SinglePokemonData | null
     typesList: PokemonData | null
+    uniqeIdPokemon:  PokemonInfo[] | null;
 }
 export interface Pokemon {
     name: string;
     url: string;
+}
+export interface PokemonUniqeType {
+    pokemon: Pokemon
+    slot: number
 }
 export interface PokemonUrl {
     url: string
@@ -128,9 +133,9 @@ export interface SinglePokemonData {
     color: Pokemon
     egg_groups: Pokemon[]
     evolution_chain: PokemonUrl
-    // evolves_from_species: any
+    evolves_from_species: any
     flavor_text_entries: FlavorTextEntry[]
-    // form_descriptions: any[]
+    form_descriptions: any[]
     forms_switchable: boolean
     gender_rate: number
     genera: Genera[]
