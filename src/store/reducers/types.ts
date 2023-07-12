@@ -6,7 +6,8 @@ export interface RootState {
     singlePokemon: PokemonInfo | null
     speciesUrl: SinglePokemonData | null
     typesList: PokemonData | null
-    uniqeIdPokemon:  PokemonInfo[] | null;
+    uniqeIdPokemon: PokemonInfo[] | null;
+    currentPgae: number
 }
 export interface Pokemon {
     name: string;

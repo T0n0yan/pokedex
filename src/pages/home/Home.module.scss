@@ -13,7 +13,7 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     .pokemonItem {
         width: 19%;
@@ -37,20 +37,17 @@
 .inputs_container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    @include screen-max-width-991 {
-        width: 100%;
-    }
-    @include screen-max-width-767 {
-        input {
-            width: 100%;
-        }
-    }
 
     .inputs {
-        width: 70%;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
         @include screen-max-width-991 {
             width: 100%;
+            justify-content: space-between;
         }
     }
 

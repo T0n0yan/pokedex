@@ -11,26 +11,25 @@ const initialState: RootState = {
     speciesUrl: null,
     typesList: null,
     uniqeIdPokemon: null,
+    currentPgae:1
 }
-
-
-export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async () => {
+export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async (perPage: string) => {
     try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon")
-        const pokemons = response.data
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=0`);
+        const pokemons = response.data;
         if (pokemons) {
             const pokemonDataPromises = pokemons.results.map(async (pokemon: Pokemon) => {
-                const pokemonResponse = await axios.get(pokemon.url)
-                return pokemonResponse.data
-            })
-            const pokemonsData = await Promise.all(pokemonDataPromises)
-            return pokemonsData
+                const pokemonResponse = await axios.get(pokemon.url);
+                return pokemonResponse.data;
+            });
+            const pokemonsData = await Promise.all(pokemonDataPromises);
+            return { pokemons: pokemonsData, pokemonMainData: pokemons };
         }
-
     } catch (err) {
-        console.error("Error", err)
+        console.error("Error", err);
+        throw new Error("Error with Pokemons data");
     }
-})
+});
 export const fetchSinglePokemonById = createAsyncThunk("pokemon/fetchById", async (id: string | undefined) => {
     try {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -74,26 +73,25 @@ export const fetchPokemonByType = createAsyncThunk("pokemon/unique/type", async 
         console.error("Error pokemon unique type", err)
     }
 })
+
 const pokemonSlice = createSlice({
     name: "Pokemon",
     initialState,
-    reducers: {
-    },
-
+    reducers: {},
     extraReducers: (builder) => {
         builder
-
             .addCase(fetchAllPokemons.pending, (state) => {
-                state.loading = true;
-                state.error = undefined;
+                state.loading = true
+                state.error = undefined
             })
             .addCase(fetchAllPokemons.fulfilled, (state, action) => {
                 state.loading = false;
-                state.pokemonInfo = action.payload!;
+                state.pokemonInfo = action.payload!.pokemons;
+                state.pokemonsData = action.payload!.pokemonMainData;
             })
             .addCase(fetchAllPokemons.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
+                state.loading = false
+                state.error = action.error.message
             })
 
 

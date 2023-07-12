@@ -15,7 +15,6 @@ const ShowPerPage: FC<IShowPerPage> = ({ sortChangeOrder }) => {
                 { value: '10', label: '10' },
                 { value: '20', label: '20' },
                 { value: '50', label: '50' },
-                { value: '80', label: '80' },
             ]}
             className={styles.drop_down}
         />

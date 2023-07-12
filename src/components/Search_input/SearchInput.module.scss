@@ -4,9 +4,13 @@
 @import "src/styles/color.scss";
 
 .input {
-    width: 300px;
+    width: 40%;
     @include screen-max-width-991 {
         width: 100%;
+        margin-bottom: 20px;
+    }
+    @include screen-max-width-576 {
+        margin: 0;
     }
 }
 .button {

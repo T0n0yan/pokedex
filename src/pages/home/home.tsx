@@ -11,6 +11,7 @@ import styles from './Home.module.scss';
 import ShowPerPage from "components/Show_per_page";
 import { Link } from "react-router-dom";
 import { PokemonInfo } from "store/reducers/types";
+import { RootState } from "store";
 
 
 const Home: FC = () => {
@@ -18,17 +19,20 @@ const Home: FC = () => {
     const [searchPokemon, setSearchPokemon] = useState('');
     const [sortOrder, setSortOrder] = useState('Lowest To Highest Number');
     const [selectedType, setSelectedType] = useState('allTypes');
+    const [perPage, setPerPage] = useState("20")
 
-    const uniqueTypeOfPokemon = useAppSelector(state => state.pokemonReducer.uniqeIdPokemon)
-    const pokemonData = useAppSelector(state => state.pokemonReducer.pokemonInfo);
-    const pokemonEachData = selectedType === "allTypes" ? pokemonData : uniqueTypeOfPokemon
-    const typeList = useAppSelector(state => state.pokemonReducer.typesList)
-    const [filteredData, setFilteredData] = useState<PokemonInfo[]>([])
+    const uniqueTypeOfPokemon = useAppSelector((state: RootState) => state.pokemonReducer.uniqeIdPokemon);
+    const pokemonData = useAppSelector((state: RootState) => state.pokemonReducer.pokemonInfo);
+    const pokemonEachData = selectedType === "allTypes" ? pokemonData : uniqueTypeOfPokemon;
+    const typeList = useAppSelector((state: RootState) => state.pokemonReducer.typesList);
+    const [filteredData, setFilteredData] = useState(pokemonEachData || []);
+    const { count, next, previous } = useAppSelector(state => state.pokemonReducer.pokemonsData!) || {}
+    
 
     useEffect(() => {
-        dispatch(fetchAllPokemons());
+        dispatch(fetchAllPokemons(perPage));
         dispatch(fetchAlltypes());
-    }, [dispatch]);
+    }, [dispatch, perPage]);
 
     useEffect(() => {
         const filteredData = pokemonEachData?.filter(el => {
@@ -47,29 +51,25 @@ const Home: FC = () => {
             }
             return 0;
         });
-
         setFilteredData(filteredData || []);
-    }, [pokemonEachData, searchPokemon, selectedType,sortOrder]);
+    }, [pokemonEachData, searchPokemon, selectedType, sortOrder, perPage]);
 
     const handleSearch = (value: string) => {
         setSearchPokemon(value);
     };
 
-    // const handleSortOrderChange = (value: string) => {
-    //     setSortOrder(value);
-    // };
-
     const handleTypeChange = (value: string) => {
         setSelectedType(value);
     };
+
     const handleSort = (value: string) => {
         setSortOrder(value);
     };
 
+    const handlePerPage = (value: string) => {
+        setPerPage(value);
+    };
 
-    // console.log('====================================');
-    // console.log(filteredData);
-    // console.log('====================================');
     return (
         <PageWrapper>
             <h1 className={styles.title}>Pokédex</h1>
@@ -81,23 +81,26 @@ const Home: FC = () => {
                 </div>
                 <div className={styles.per_page}>
                     <span className={styles.per_page_text}>Show Per Page:</span>
-                    {/* <ShowPerPage sortChangeOrder={handleSortOrderChange} /> */}
+                    <ShowPerPage sortChangeOrder={handlePerPage} />
                 </div>
             </div>
             <div className={styles.container}>
-                {filteredData ? (filteredData.map(el => (
-                    <Link className={styles.pokemonItem} to={`/pokemon/${el.id}`} key={el.id}>
-                        <CardComponent
-                            url={el.sprites.other?.["official-artwork"].front_default}
-                            title={el.name}
-                            hashId={`#${el.id.toString().padStart(3, "0")}`}
-                            types={el.types}
-
-                        />
-
-                    </Link>))) : <p className={styles.emptyList}>Nothing was found</p>}
+                {filteredData.length ? (
+                    filteredData.map(el => (
+                        <Link className={styles.pokemonItem} to={`/pokemon/${el.id}`} key={el.id}>
+                            <CardComponent
+                                url={el.sprites.other?.["official-artwork"].front_default}
+                                title={el.name}
+                                hashId={`#${el.id.toString().padStart(3, "0")}`}
+                                types={el.types}
+                            />
+                        </Link>
+                    ))
+                ) : (
+                    <p className={styles.emptyList}>Nothing was found</p>
+                )}
             </div>
-            <Pagination page={3} />
+            <Pagination page={count} />
         </PageWrapper>
     );
 };
