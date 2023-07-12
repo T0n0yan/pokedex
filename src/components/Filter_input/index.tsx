@@ -21,8 +21,8 @@ const FilteredInput: FC<TFilteredInput> = ({ handleSort }) => {
                 { value: 'A-Z', label: 'A-Z' },
                 { value: 'Z-A', label: 'Z-A' },
                 { value: 'Lowest To Highest Number', label: 'Lowest to Highest' },
-                { value: 'Highers To Lowest Number', label: 'Highest to Lowest' },
-            ]}
+                { value: 'Highest To Lowest Number', label: 'Highest to Lowest' },
+              ]}
         />
     );
 }

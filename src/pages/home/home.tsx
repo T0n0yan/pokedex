@@ -49,21 +49,21 @@ const Home: FC = () => {
         });
 
         setFilteredData(filteredData || []);
-    }, [pokemonEachData, searchPokemon, selectedType]);
+    }, [pokemonEachData, searchPokemon, selectedType,sortOrder]);
 
     const handleSearch = (value: string) => {
         setSearchPokemon(value);
     };
 
-    const handleSortOrderChange = (value: string) => {
-        setSortOrder(value);
-    };
+    // const handleSortOrderChange = (value: string) => {
+    //     setSortOrder(value);
+    // };
 
     const handleTypeChange = (value: string) => {
         setSelectedType(value);
     };
     const handleSort = (value: string) => {
-        setSelectedType(value);
+        setSortOrder(value);
     };
 
 
@@ -81,7 +81,7 @@ const Home: FC = () => {
                 </div>
                 <div className={styles.per_page}>
                     <span className={styles.per_page_text}>Show Per Page:</span>
-                    <ShowPerPage sortChangeOrder={handleSortOrderChange} />
+                    {/* <ShowPerPage sortChangeOrder={handleSortOrderChange} /> */}
                 </div>
             </div>
             <div className={styles.container}>
