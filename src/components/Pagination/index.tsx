@@ -18,6 +18,7 @@ const CustomPagination: FC<TPagination> = ({ page }) => {
             responsive
             current={current}
             onChange={onChange}
+            style={{ marginTop: '20px', textAlign: 'end' }}
         />
     );
 };

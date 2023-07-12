@@ -35,54 +35,60 @@ const PokemonItem: FC = () => {
     }
     return singlePokemon && spacesUrlData && (
         <PageWrapper>
-            <Link to='/' className={styles.link}>← Explore more Pokémon</Link>
-            <div>
-                <h1>{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)} #{singlePokemon.id.toString().padStart(3, "0")}</h1>
+            <div className={styles.container} >
+                <Link to='/' className={styles.link}>← Explore more Pokémon</Link>
+                <h1 className={styles.title}>{singlePokemon.name.charAt(0).toUpperCase() + singlePokemon.name.slice(1)} #{singlePokemon.id.toString().padStart(3, "0")}</h1>
                 <div className={styles.img_description_cont}>
 
-                    <img className={styles.img} src={singlePokemon.sprites.other?.["official-artwork"].front_default} alt="" />
+
+                    <img
+                        className={styles.img}
+                        width={400}
+                        height={400}
+                        src={singlePokemon.sprites.other?.["official-artwork"].front_default}
+                        alt="Pokemon Each Photo" />
 
                     <div className={styles.description_cont}>
                         <div>
                             <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, " ").replace(/\f/g, "").trim()}</p>
                         </div>
-                        <div className={styles.pokemin_info}>
+                        <div className={styles.pokemin__abilities_info}>
                             <div className={styles.pokemon_each_info}>
-                                <p>Height</p>
+                                <p className={styles.abilites_name}>Height</p>
                                 <p>{calcualteHeight(singlePokemon.height)}</p>
                             </div>
                             <div className={styles.pokemon_each_info}>
-                                <p>Weight</p>
+                                <p className={styles.abilites_name}>Weight</p>
                                 <p>{calculateWeight(singlePokemon.weight)}</p>
                             </div>
                             <div className={styles.pokemon_each_info}>
-                                <p>Category</p>
+                                <p className={styles.abilites_name}>Category</p>
                                 <p>{spacesUrlData.genera[7].genus.split(" ")[0]}</p>
                             </div>
                             <div className={styles.pokemon_each_info}>
-                                <p>Types</p>
+                                <p className={styles.abilites_name}>Types</p>
                                 {singlePokemon.types.map((el, index) => {
                                     return <p key={index}>{el.type.name}</p>
                                 })}
                             </div>
                             <div className={styles.pokemon_each_info}>
-                                <p>Ability</p>
+                                <p className={styles.abilites_name}>Ability</p>
                                 <p>{singlePokemon.abilities[0].ability.name}</p>
                             </div>
                             <div className={styles.pokemon_each_info}>
-                                <p>Gender</p>
+                                <p className={styles.abilites_name}>Gender</p>
                                 {spacesUrlData.gender_rate >= 1
-                                    ? <div style={{ display: "flex", flexDirection: "column" ,width:"100%"}}><span>male</span><span>female</span></div>
+                                    ? <div style={{ display: "flex", flexDirection: "column", width: "100%" }}><span>male</span><span>female</span></div>
                                     : spacesUrlData.gender_rate === 0
                                         ? <p>male</p>
                                         : <p>none</p>
                                 }
                             </div>
-
+                            <div className={styles.stats}></div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </PageWrapper>
 
