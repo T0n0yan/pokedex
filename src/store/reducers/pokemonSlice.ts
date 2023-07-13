@@ -89,12 +89,13 @@ export const fetchPokemonByType = createAsyncThunk("pokemon/unique/type", async 
             })
             const pokemonsType = await Promise.all(pokeomUniqeType)
             return pokemonsType
+
         }
     } catch (err) {
         console.error("Error pokemon unique type", err)
+
     }
 })
-
 
 const pokemonSlice = createSlice({
     name: "Pokemon",
