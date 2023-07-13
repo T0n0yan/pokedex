@@ -1,4 +1,4 @@
-export interface RootState {
+export interface initialRootState {
     pokemonsData: PokemonData | null;
     loading: boolean,
     error: string | undefined,
@@ -7,7 +7,9 @@ export interface RootState {
     speciesUrl: SinglePokemonData | null
     typesList: PokemonData | null
     uniqeIdPokemon: PokemonInfo[] | null;
-    currentPgae: number
+    currentPage: number;
+    nextURL: string;
+    previousURL: string;
 }
 export interface Pokemon {
     name: string;

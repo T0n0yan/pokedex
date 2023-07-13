@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { Pokemon, PokemonUniqeType, RootState } from "../reducers/types";
+import { Pokemon, PokemonUniqeType, initialRootState } from "../reducers/types";
 import axios from 'axios'
+import { RootState } from "store";
 
-const initialState: RootState = {
+const initialState: initialRootState = {
     pokemonsData: null,
     loading: false,
     error: undefined,
@@ -11,11 +12,29 @@ const initialState: RootState = {
     speciesUrl: null,
     typesList: null,
     uniqeIdPokemon: null,
-    currentPgae:1
+    currentPage: 1,
+    nextURL: "",
+    previousURL: ""
 }
-export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async (perPage: string) => {
+interface IDataUrl {
+    perPage: string,
+    fetchURl?: string
+}
+export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async (data: IDataUrl, thunkAPI) => {
     try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=0`);
+        const state = thunkAPI.getState() as RootState
+        const currentPage = state.pokemonReducer.currentPage
+        const offset = ((currentPage - 1) * +data.perPage)
+        // console.log('====================================');
+        // console.log(data.perPage);
+        // console.log('====================================');
+        const { perPage, fetchURl = `https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}` } = data
+        // const nextURL  = `${}?offset=${offset}&limit=&{} `
+        // https://pokeapi.co/api/v2/pokemon?offset=40&limit=20",
+
+        // "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20",
+
+        const response = await axios.get(fetchURl);
         const pokemons = response.data;
         if (pokemons) {
             const pokemonDataPromises = pokemons.results.map(async (pokemon: Pokemon) => {
@@ -23,7 +42,10 @@ export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async (perP
                 return pokemonResponse.data;
             });
             const pokemonsData = await Promise.all(pokemonDataPromises);
-            return { pokemons: pokemonsData, pokemonMainData: pokemons };
+            const nextPageURL = pokemons.next
+            const previousPageURL = pokemons.previous
+            // thunkAPI.dispatch(changePage(currentPage))
+            return { pokemons: pokemonsData, pokemonMainData: pokemons, nextPageURL, previousPageURL };
         }
     } catch (err) {
         console.error("Error", err);
@@ -54,8 +76,6 @@ export const fetchAlltypes = createAsyncThunk("pokemons/type", async () => {
         console.error("Types error ", err)
     }
 })
-
-
 export const fetchPokemonByType = createAsyncThunk("pokemon/unique/type", async (typeUrl: string) => {
     try {
         const response = await axios.get(typeUrl)
@@ -74,10 +94,15 @@ export const fetchPokemonByType = createAsyncThunk("pokemon/unique/type", async 
     }
 })
 
+
 const pokemonSlice = createSlice({
     name: "Pokemon",
     initialState,
-    reducers: {},
+    reducers: {
+        changePage: (state, action) => {
+            state.currentPage = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchAllPokemons.pending, (state) => {
@@ -88,6 +113,9 @@ const pokemonSlice = createSlice({
                 state.loading = false;
                 state.pokemonInfo = action.payload!.pokemons;
                 state.pokemonsData = action.payload!.pokemonMainData;
+                state.nextURL = action.payload?.nextPageURL
+                state.previousURL = action.payload?.previousPageURL
+
             })
             .addCase(fetchAllPokemons.rejected, (state, action) => {
                 state.loading = false
@@ -149,8 +177,10 @@ const pokemonSlice = createSlice({
                 state.loading = false
                 state.error = action.error.message;
             })
+
+
     },
 })
-export const { actions } = pokemonSlice
+export const { changePage } = pokemonSlice.actions
 export default pokemonSlice.reducer
 

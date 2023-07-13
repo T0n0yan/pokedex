@@ -27,10 +27,9 @@ const Home: FC = () => {
     const typeList = useAppSelector((state: RootState) => state.pokemonReducer.typesList);
     const [filteredData, setFilteredData] = useState(pokemonEachData || []);
     const { count, next, previous } = useAppSelector(state => state.pokemonReducer.pokemonsData!) || {}
-    
 
     useEffect(() => {
-        dispatch(fetchAllPokemons(perPage));
+        dispatch(fetchAllPokemons({ perPage }));
         dispatch(fetchAlltypes());
     }, [dispatch, perPage]);
 
@@ -100,7 +99,7 @@ const Home: FC = () => {
                     <p className={styles.emptyList}>Nothing was found</p>
                 )}
             </div>
-            <Pagination page={count} />
+            <Pagination page={count} perPage={perPage} />
         </PageWrapper>
     );
 };
