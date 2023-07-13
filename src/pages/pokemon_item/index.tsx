@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { fetchSinglePokemonById, fetchSpeciesData } from "store/reducers/pokemonSlice";
 import PageWrapper from 'layout/Page_wrapper';
 import styles from './PokemonTypes.module.scss'
+import Stats from "components/Stats";
 
 
 const PokemonItem: FC = () => {
@@ -84,7 +85,9 @@ const PokemonItem: FC = () => {
                                         : <p>none</p>
                                 }
                             </div>
-                            <div className={styles.stats}></div>
+                            <div className={styles.stats}>
+                                <Stats stats={singlePokemon.stats} />
+                            </div>
                         </div>
                     </div>
 

@@ -24,10 +24,11 @@ export const fetchAllPokemons = createAsyncThunk("pokemon/fetchAll", async (data
     try {
         const state = thunkAPI.getState() as RootState
         const currentPage = state.pokemonReducer.currentPage
-        const offset = ((currentPage - 1) * +data.perPage)
-        // console.log('====================================');
-        // console.log(data.perPage);
-        // console.log('====================================');
+        const offset = (currentPage - 1) * (+data.perPage)
+        console.log('====================================');
+        console.log(data.perPage);
+        console.log(currentPage);
+        console.log('====================================');
         const { perPage, fetchURl = `https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}` } = data
         // const nextURL  = `${}?offset=${offset}&limit=&{} `
         // https://pokeapi.co/api/v2/pokemon?offset=40&limit=20",
@@ -183,4 +184,3 @@ const pokemonSlice = createSlice({
 })
 export const { changePage } = pokemonSlice.actions
 export default pokemonSlice.reducer
-
