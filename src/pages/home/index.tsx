@@ -1,14 +1,14 @@
-import PageWrapper from 'layout/Page_wrapper';
-import React, { useEffect, useState } from 'react';
-import styles from './Home.module.scss';
-import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { RootState } from 'store';
-import CardComponent from 'components/Card';
 import { fetchAllPokemon } from 'store/reducers/pokemonSlice';
 import EmptyLoadingCard from 'components/Empty_loading_card';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import React, { useEffect, useState } from 'react';
+import ShowPerPage from 'components/Show_per_page';
 import { PropagateLoader } from 'react-spinners';
-import ShowPerPage from './../../components/Show_per_page/index';
-import Pagination from '../../components/Pagination';
+import Pagination from 'components/Pagination';
+import PageWrapper from 'layout/Page_wrapper';
+import CardComponent from 'components/Card';
+import styles from './Home.module.scss';
+import { RootState } from 'store';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +48,9 @@ const Home = () => {
           ))
         ) : (
           <div className={styles.loading}>
-            <PropagateLoader color="#397f84" size={10} />
+            <div className={styles.loader} style={{ margin: ' 50px auto' }}>
+              <PropagateLoader color="#397f84" size={10} />
+            </div>
           </div>
         )}
       </div>
