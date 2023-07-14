@@ -1,29 +1,36 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react-hooks/recommended"
-    ],
-    "rules": {
-        "react-hooks/exhaustive-deps": "off",
-        "@typescript-eslint/no-var-requires": "off",
-        "no-multiple-empty-lines": [
-            "error",
-            { "max": 2, "maxBOF": 1 }
-        ],
-        "no-console": [
-            "warn",
-            { "allow": ["warn", "error"] }
-        ]
-    },
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": { "jsx": true },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": ["react", "@typescript-eslint"]
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 1 }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "prettier/prettier": "error",
+    "no-console": ["warn", { "allow": ["warn", "error", "log"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

@@ -13,7 +13,6 @@
     "@types/react-dom": "^18.2.6",
     "antd": "^5.6.4",
     "axios": "^1.4.0",
-    "prettier": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
@@ -28,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -50,10 +51,15 @@
   },
   "devDependencies": {
     "@types/webpack-env": "^1.18.1",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "css-loader": "^6.8.1",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.0",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "sass-resources-loader": "^2.2.5",

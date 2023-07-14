@@ -9,27 +9,27 @@ Design.
 
 ### Features
 
-* Pokemon Search: Users can search for specific Pokemon by name .
+- Pokemon Search: Users can search for specific Pokemon by name .
 
 ### Pokemon Details:
 
-* The application provides detailed information about each Pokemon, including its type, abilities, stats, and evolution
+- The application provides detailed information about each Pokemon, including its type, abilities, stats, and evolution
   chain.
-* Filtering: Users can filter Pokemon based on their type, allowing for easy categorization and exploration.
-* Sorting: Pokemon can be sorted by name, number, or any other relevant criteria.
+- Filtering: Users can filter Pokemon based on their type, allowing for easy categorization and exploration.
+- Sorting: Pokemon can be sorted by name, number, or any other relevant criteria.
 
 ### Responsive Design:
 
-* The application is designed to be responsive and accessible on various devices.
+- The application is designed to be responsive and accessible on various devices.
 
 ### Technologies Used:
 
-* Frontend: JavaScript, React.js, TypeScript
-* State Management: Redux Toolkit
-* UI Framework: Ant Design
-* React Spinners
-* Styling: SCSS (Sass)
-* API Call: Axios
+- Frontend: JavaScript, React.js, TypeScript
+- State Management: Redux Toolkit
+- UI Framework: Ant Design
+- React Spinners
+- Styling: SCSS (Sass)
+- API Call: Axios
 
 ## Installation
 
@@ -41,9 +41,7 @@ Install dependencies: `npm install`
 
 Start the application: `npm start`
 
-
-
-> Live -  <https://pokemon-t0n0yan.vercel.app/>
+> Live - <https://pokemon-t0n0yan.vercel.app/>
 
 ## APIs
 

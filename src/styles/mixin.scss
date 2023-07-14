@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 @mixin screen-max-width-1024 {
   @media (max-width: $max-width-1024) {

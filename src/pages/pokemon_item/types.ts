@@ -1,3 +1,3 @@
 export type TPokemonItem = {
-    name: string
-}
+  name: string;
+};
