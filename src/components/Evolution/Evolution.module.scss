@@ -12,8 +12,10 @@
   .evolution_item {
     width: 30%;
     @include screen-max-width-576 {
-      width: 100%;
-      margin: 5px 0;
+      width      : 100%;
+      align-self : center;
+      border     : 1px solid red;
+      margin     : 5px 0;
     }
   }
 }
