@@ -168,21 +168,21 @@ export interface EvolutionChain {
     id: number;
     baby_trigger_item: NamedAPIResource<Item> | null;
     chain: ChainLink;
-}
-
-export interface NamedAPIResource<T> {
+  }
+  
+  export interface NamedAPIResource<T> {
     name: string;
     url: string;
-}
-
-export interface ChainLink {
+  }
+  
+  export interface ChainLink {
     is_baby: boolean;
     species: NamedAPIResource<PokemonSpecies>;
     evolution_details: EvolutionDetail[];
     evolves_to: ChainLink[];
-}
-
-export interface EvolutionDetail {
+  }
+  
+  export interface EvolutionDetail {
     item: NamedAPIResource<Item> | null;
     trigger: NamedAPIResource<EvolutionTrigger>;
     gender: number | null;
@@ -201,34 +201,35 @@ export interface EvolutionDetail {
     time_of_day: string;
     trade_species: NamedAPIResource<PokemonSpecies> | null;
     turn_upside_down: boolean;
-}
-
-export interface Item {
+  }
+  
+  export interface Item {
     name: string;
     url: string;
-}
-
-export interface EvolutionTrigger {
+  }
+  
+  export interface EvolutionTrigger {
     name: string;
     url: string;
-}
-
-export interface PokemonSpecies {
+  }
+  
+  export interface PokemonSpecies {
     name: string;
     url: string;
-}
-
-export interface Move {
+  }
+  
+  export interface Move {
     name: string;
     url: string;
-}
-
-export interface Type {
+  }
+  
+  export interface Type {
     name: string;
     url: string;
-}
-
-export interface Location {
+  }
+  
+  export interface Location {
     name: string;
     url: string;
-}
+  }
+  

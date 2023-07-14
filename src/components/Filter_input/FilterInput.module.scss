@@ -1,9 +1,0 @@
-@import "src/styles/mixin.scss";
-.input {
-    @include screen-max-width-991 {
-        width: 48% !important;
-    }
-    @include screen-max-width-576 {
-        width: 100% !important;
-    }
-}

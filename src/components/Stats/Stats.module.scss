@@ -1,47 +1,69 @@
-.stats-container {
-    display: flex;
-    justify-content: space-between;
-}
+@import "src/styles/mixin";
+@import "src/styles/color";
+@import "src/styles/variables";
 
-.stat-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
+.stats_container {
+  display         : flex;
+  justify-content : space-between;
+  flex-wrap       : wrap;
 
-.stat-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 70px;
-    height: 100px;
-    margin-right: 10px;
-    .stat-name {
-        display: block;
-        width: 100px;
-        text-align: center;
-    }
-}
+  @include screen-max-width-991 {
+	margin-top : 30px;
+  }
 
-.stat-progress {
-    width: 100%;
-    background-color: green;
-    border-radius: 5px;
-}
+  .stat_item {
+	width   : 14%;
+	display : flex;
+	height  : 180px;
+	@include screen-max-width-991 {
+	  width  : 18%;
+	  margin : 0 20px;
+	  height : 140px;
+	}
+	@include screen-max-width-767 {
+	  margin : 0 30px;
+	}
+	@include screen-max-width-576 {
+	  width  : 25%;
+	  margin : 0 15px;
+	}
+	@include screen-max-width-440 {
+	  width  : 28%;
+	  margin : 0;
+	}
+  }
 
-.stat-tiny-bar-chart {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100%;
-}
+  .stat_bar {
+	display        : flex;
+	flex-direction : column;
+	align-items    : center;
+	width          : 100%;
+	height         : 100px;
 
-.tiny-bar {
-    width: 70px;
-    height: 8px;
-    background-color: #f2f2f2;
-    margin-bottom: 2px;
-}
+	.stat_tiny_bar_chart {
+	  display        : flex;
+	  flex-direction : column-reverse;
+	  width          : 100%;
 
-.tiny-bar.active {
-    background-color: #397f84;
+	  .tiny_bar {
+		width            : 100%;
+		height           : 8px;
+		background-color : $image_background;
+		margin-bottom    : 2px;
+		@include screen-max-width-991 {
+		  height : 5px;
+		}
+	  }
+
+	  .tiny_bar_active {
+		background-color : $main_teal;
+	  }
+	}
+
+	.stat_name {
+	  display    : block;
+	  width      : 100%;
+	  text-align : center;
+	}
+  }
 }

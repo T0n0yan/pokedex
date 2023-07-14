@@ -1,14 +1,14 @@
-import { FC, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { fetchSinglePokemonById, fetchSpeciesData } from "store/reducers/pokemonSlice";
+import {FC, useEffect} from "react";
+import {Link, useParams} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {fetchSinglePokemonById, fetchSpeciesData} from "store/reducers/pokemonSlice";
 import PageWrapper from "layout/Page_wrapper";
-import styles from "./PokemonTypes.module.scss";
+import styles from "./Pokemon_types.module.scss";
 import Stats from "components/Stats";
 import Evolution from "components/Evolution";
 
 const PokemonItem: FC = () => {
-    const { id } = useParams<{ id: string }>();
+    const {id} = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const singlePokemon = useAppSelector(state => state.pokemonReducer.singlePokemon);
     const url = singlePokemon?.species.url;
@@ -61,33 +61,33 @@ const PokemonItem: FC = () => {
                             <div>
                                 <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, " ").replace(/\f/g, "").trim()}</p>
                             </div>
-                            <div className={styles.pokemin__abilities_info}>
+                            <div className={styles.pokemin_abilities_info}>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Height</p>
+                                    <p className={styles.abilities_name}>Height</p>
                                     <p>{calcualteHeight(singlePokemon.height)}</p>
                                 </div>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Weight</p>
+                                    <p className={styles.abilities_name}>Weight</p>
                                     <p>{calculateWeight(singlePokemon.weight)}</p>
                                 </div>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Category</p>
+                                    <p className={styles.abilities_name}>Category</p>
                                     <p>{spacesUrlData.genera[7].genus.split(" ")[0]}</p>
                                 </div>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Types</p>
+                                    <p className={styles.abilities_name}>Types</p>
                                     {singlePokemon.types.map((el, index) => {
                                         return <p key={index}>{el.type.name}</p>;
                                     })}
                                 </div>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Ability</p>
+                                    <p className={styles.abilities_name}>Ability</p>
                                     <p>{singlePokemon.abilities[0].ability.name}</p>
                                 </div>
                                 <div className={styles.pokemon_each_info}>
-                                    <p className={styles.abilites_name}>Gender</p>
+                                    <p className={styles.abilities_name}>Gender</p>
                                     {spacesUrlData.gender_rate >= 1 ? (
-                                        <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+                                        <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
                                             <span>male</span>
                                             <span>female</span>
                                         </div>
@@ -98,13 +98,13 @@ const PokemonItem: FC = () => {
                                     )}
                                 </div>
                                 <div className={styles.stats}>
-                                    <Stats stats={singlePokemon.stats} />
+                                    <Stats stats={singlePokemon.stats}/>
                                 </div>
                             </div>
-                            <div>
-                                <Evolution url={spacesUrlData.evolution_chain.url} />
-                            </div>
                         </div>
+                    </div>
+                    <div className={styles.evolution_cont}>
+                        <Evolution url={spacesUrlData.evolution_chain.url}/>
                     </div>
                 </div>
             </PageWrapper>

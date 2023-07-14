@@ -1,4 +1,4 @@
-# Created By Davit Tonoyan
+# Created By T0n0yan
 
 ## Pokedex
 
@@ -9,27 +9,27 @@ Design.
 
 ### Features
 
-- Pokemon Search: Users can search for specific Pokemon by name .
+* Pokemon Search: Users can search for specific Pokemon by name .
 
 ### Pokemon Details:
 
-- The application provides detailed information about each Pokemon, including its type, abilities, stats, and evolution
+* The application provides detailed information about each Pokemon, including its type, abilities, stats, and evolution
   chain.
-- Filtering: Users can filter Pokemon based on their type, allowing for easy categorization and exploration.
-- Sorting: Pokemon can be sorted by name, number, or any other relevant criteria.
+* Filtering: Users can filter Pokemon based on their type, allowing for easy categorization and exploration.
+* Sorting: Pokemon can be sorted by name, number, or any other relevant criteria.
 
 ### Responsive Design:
 
-- The application is designed to be responsive and accessible on various devices.
+* The application is designed to be responsive and accessible on various devices.
 
 ### Technologies Used:
 
-- Frontend: JavaScript, React.js, TypeScript
-- State Management: Redux Toolkit
-- UI Framework: Ant Design
-- React Spinners
-- Styling: SCSS (Sass)
-- API Call: Axios
+* Frontend: JavaScript, React.js, TypeScript
+* State Management: Redux Toolkit
+* UI Framework: Ant Design
+* React Spinners
+* Styling: SCSS (Sass)
+* API Call: Axios
 
 ## Installation
 
@@ -41,7 +41,9 @@ Install dependencies: `npm install`
 
 Start the application: `npm start`
 
-> Live - <https://pokedex-davtonoyan90-gmailcom.vercel.app/>
+
+
+> Live -  <https://pokedex-davtonoyan90-gmailcom.vercel.app/>
 
 ## APIs
 
@@ -120,3 +122,120 @@ results:Array(20)
 19: {name: 'shadow', url: 'https://pokeapi.co/api/v2/type/10002/'}
 }
 ```
+
+### Single pokemon information
+
+```
+{
+  "abilities": [
+  "id": 1,
+  "name": "bulbasaur",
+  "order": 1,
+  "species": {
+    "name": "bulbasaur",
+    "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+  },
+  "sprites": {
+    "other": {
+      "dream_world": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+        "front_female": null
+      },
+      "home": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
+        "front_female": null,
+        "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/1.png",
+        "front_shiny_female": null
+      },
+      "official-artwork": {
+        "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+        "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png"
+      }
+    }
+  },
+  "versions": {
+    "generation-i": {},
+    "generation-ii": {},
+    "generation-iii": {},
+    "generation-iv": {},
+    "generation-v": {}
+  },
+  "stats": [
+    {
+      "base_stat": 45,
+      "effort": 0,
+      "stat": {
+        "name": "hp",
+        "url": "https://pokeapi.co/api/v2/stat/1/"
+      }
+    },
+    {
+      "base_stat": 49,
+      "effort": 0,
+      "stat": {
+        "name": "attack",
+        "url": "https://pokeapi.co/api/v2/stat/2/"
+      }
+    },
+    {
+      "base_stat": 49,
+      "effort": 0,
+      "stat": {
+        "name": "defense",
+        "url": "https://pokeapi.co/api/v2/stat/3/"
+      }
+    },
+    {
+      "base_stat": 65,
+      "effort": 1,
+      "stat": {
+        "name": "special-attack",
+        "url": "https://pokeapi.co/api/v2/stat/4/"
+      }
+    },
+    {
+      "base_stat": 65,
+      "effort": 0,
+      "stat": {
+        "name": "special-defense",
+        "url": "https://pokeapi.co/api/v2/stat/5/"
+      }
+    },
+    {
+      "base_stat": 45,
+      "effort": 0,
+      "stat": {
+        "name": "speed",
+        "url": "https://pokeapi.co/api/v2/stat/6/"
+      }
+    }
+  ],
+ "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "grass",
+        "url": "https://pokeapi.co/api/v2/type/12/"
+      }
+    },
+    {
+      "slot": 2,
+      "type": {
+        "name": "poison",
+        "url": "https://pokeapi.co/api/v2/type/4/"
+      }
+    }
+  ]
+  "weight": 69
+}
+
+```
+
+### I have already done the research and incorporated these APIs into the project, and we hope they prove useful to you.
+
+Feel free to explore the provided APIs to access additional data or enhance your Pokedex application further.
+
+## Disclaimer
+
+This Pokedex application is not affiliated with or endorsed by The Pokémon Company International or Nintendo. Pokémon is
+a registered trademark of The Pokémon Company International.
