@@ -43,7 +43,7 @@ Start the application: `npm start`
 
 
 
-> Live -  <https://pokedex-davtonoyan90-gmailcom.vercel.app/>
+> Live -  <https://pokemon-t0n0yan.vercel.app/>
 
 ## APIs
 
