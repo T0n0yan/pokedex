@@ -10,34 +10,20 @@
     "rules": {
         "react-hooks/exhaustive-deps": "off",
         "@typescript-eslint/no-var-requires": "off",
-        // "@typescript-eslint/no-explicit-any": "warn",
         "no-multiple-empty-lines": [
             "error",
-            {
-                "max": 2,
-                "maxBOF": 1
-            }
+            { "max": 2, "maxBOF": 1 }
         ],
         "no-console": [
             "warn",
-            {
-                "allow": [
-                    "warn",
-                    "error"
-                ]
-            }
+            { "allow": ["warn", "error"] }
         ]
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
+        "ecmaFeatures": { "jsx": true },
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    "plugins": ["react", "@typescript-eslint"]
 }
