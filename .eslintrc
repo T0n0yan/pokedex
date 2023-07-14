@@ -22,11 +22,27 @@
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 1 }],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxBOF": 1
+      }
+    ],
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx", ".jsx"]
+      }
+    ],
     "prettier/prettier": "error",
-    "no-console": ["warn", { "allow": ["warn", "error", "log"] }]
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error", "log"]
+      }
+    ]
   },
   "settings": {
     "react": {

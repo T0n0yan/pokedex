@@ -4,7 +4,7 @@ import styles from './Home.module.scss';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { RootState } from 'store';
 import CardComponent from 'components/Card';
-import { fetchAllPokemons } from 'store/reducers/pokemonSlice';
+import { fetchAllPokemon } from 'store/reducers/pokemonSlice';
 import EmptyLoadingCard from 'components/Empty_loading_card';
 import { PropagateLoader } from 'react-spinners';
 import ShowPerPage from './../../components/Show_per_page/index';
@@ -18,7 +18,7 @@ const Home = () => {
   const [perPage, setPerPage] = useState('20');
 
   useEffect(() => {
-    dispatch(fetchAllPokemons({ perPage }));
+    dispatch(fetchAllPokemon({ perPage }));
   }, [dispatch, perPage]);
 
   const array = new Array(+perPage).fill('').map((_, index) => {

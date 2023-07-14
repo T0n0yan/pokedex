@@ -61,7 +61,7 @@ const PokemonItem: FC = () => {
               <div>
                 <p>{spacesUrlData.flavor_text_entries[1].flavor_text.replace(/\n/g, ' ').replace(/\f/g, '').trim()}</p>
               </div>
-              <div className={styles.pokemin_abilities_info}>
+              <div className={styles.pokemon_abilities_info}>
                 <div className={styles.pokemon_each_info}>
                   <p className={styles.abilities_name}>Height</p>
                   <p>{calcualteHeight(singlePokemon.height)}</p>

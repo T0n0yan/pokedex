@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { initialRootState } from './types';
-import axios from 'axios';
 import { RootState } from 'store';
+import axios from 'axios';
 
 const initialState: initialRootState = {
   pokemonsData: null,
@@ -13,7 +13,7 @@ const initialState: initialRootState = {
 
   pokemonInfo: null,
   typesList: null,
-  uniqeIdPokemon: null,
+  uniqueIdPokemon: null,
 
   nextURL: '',
   previousURL: '',
@@ -26,7 +26,7 @@ interface IDataUrl {
   fetchURl?: string;
 }
 
-export const fetchAllPokemons = createAsyncThunk('pokemon/fetchAll', async (data: IDataUrl, thunkAPI) => {
+export const fetchAllPokemon = createAsyncThunk('pokemon/fetchAll', async (data: IDataUrl, thunkAPI) => {
   try {
     const state = thunkAPI.getState() as RootState;
     const currentPage = state.pokemonReducer.currentPage;
@@ -40,7 +40,7 @@ export const fetchAllPokemons = createAsyncThunk('pokemon/fetchAll', async (data
     return { response: response.data, next: nextPageURL, prev: previousPageURL };
   } catch (err) {
     console.error('Error', err);
-    throw new Error('Error with Pokemons data');
+    throw new Error(`Error with Pokemon's  data`);
   }
 });
 export const fetchSinglePokemonById = createAsyncThunk('pokemon/fetchById', async (id: string | undefined) => {
@@ -51,12 +51,12 @@ export const fetchSinglePokemonById = createAsyncThunk('pokemon/fetchById', asyn
     console.error('Error Id', err);
   }
 });
-export const fetchSpeciesData = createAsyncThunk('pokemon/fetchSpaciesData', async (url: string) => {
+export const fetchSpeciesData = createAsyncThunk('pokemon/fetchSpeciesData', async (url: string) => {
   try {
     const response = await axios.get(url);
     return response.data;
   } catch (err) {
-    console.error('Error Species url not exsist', err);
+    console.error('Error Species url not exist', err);
   }
 });
 const pokemonSlice = createSlice({
@@ -70,17 +70,17 @@ const pokemonSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchAllPokemons.pending, state => {
+      .addCase(fetchAllPokemon.pending, state => {
         state.loading = true;
         state.error = undefined;
       })
-      .addCase(fetchAllPokemons.fulfilled, (state, action) => {
+      .addCase(fetchAllPokemon.fulfilled, (state, action) => {
         state.loading = false;
         state.pokemonsData = action.payload.response;
         state.nextURL = action.payload?.next;
         state.previousURL = action.payload?.prev;
       })
-      .addCase(fetchAllPokemons.rejected, (state, action) => {
+      .addCase(fetchAllPokemon.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

@@ -8,6 +8,7 @@
     flex-direction: column;
     margin: 0;
   }
+
   .evolution_item {
     width: 30%;
     @include screen-max-width-576 {

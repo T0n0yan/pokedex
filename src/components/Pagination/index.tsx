@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Pagination } from 'antd';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { changePage, fetchAllPokemons } from 'store/reducers/pokemonSlice';
+import { changePage, fetchAllPokemon } from 'store/reducers/pokemonSlice';
 
 export type TPagination = {
   total: number | null;
@@ -26,14 +26,14 @@ const CustomPagination: FC<TPagination> = ({ total, perPage }) => {
     } else if (currentPage - value === 1) {
       handlePreviousPage();
     } else {
-      await dispatch(fetchAllPokemons({ perPage }));
+      await dispatch(fetchAllPokemon({ perPage }));
     }
   };
   const handelNextPage = () => {
-    dispatch(fetchAllPokemons({ perPage, fetchURl: nextPage }));
+    dispatch(fetchAllPokemon({ perPage, fetchURl: nextPage }));
   };
   const handlePreviousPage = () => {
-    dispatch(fetchAllPokemons({ perPage, fetchURl: previousPage }));
+    dispatch(fetchAllPokemon({ perPage, fetchURl: previousPage }));
   };
 
   return (

@@ -6,7 +6,7 @@ export interface initialRootState {
   singlePokemon: PokemonInfo | null;
   speciesUrl: SinglePokemonData | null;
   typesList: PokemonData | null;
-  uniqeIdPokemon: PokemonInfo[] | null;
+  uniqueIdPokemon: PokemonInfo[] | null;
   currentPage: number;
   nextURL: string;
   previousURL: string;
