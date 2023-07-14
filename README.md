@@ -1,46 +1,122 @@
-# Getting Started with Create React App
+# Created By Davit Tonoyan
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Pokedex
 
-## Available Scripts
+### A Pokedex is an application that allows users to browse and explore information about various Pokemon species.
 
-In the project directory, you can run:
+This particular Pokedex application is built using HTML, SCSS, JavaScript, React.js, TypeScript, Redux Toolkit, and Ant
+Design.
 
-### `npm start`
+### Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Pokemon Search: Users can search for specific Pokemon by name .
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Pokemon Details:
 
-### `npm test`
+- The application provides detailed information about each Pokemon, including its type, abilities, stats, and evolution
+  chain.
+- Filtering: Users can filter Pokemon based on their type, allowing for easy categorization and exploration.
+- Sorting: Pokemon can be sorted by name, number, or any other relevant criteria.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Responsive Design:
 
-### `npm run build`
+- The application is designed to be responsive and accessible on various devices.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies Used:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend: JavaScript, React.js, TypeScript
+- State Management: Redux Toolkit
+- UI Framework: Ant Design
+- React Spinners
+- Styling: SCSS (Sass)
+- API Call: Axios
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+Clone the repository: `git clone`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> <https://github.com/T0n0yan/pokedex.git>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install dependencies: `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Start the application: `npm start`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> Live - <https://pokedex-davtonoyan90-gmailcom.vercel.app/>
 
-## Learn More
+## APIs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Here are some APIs that can be helpful if you need to find additional data or integrate additional functionality into
+the project.
+I have done the research to find and incorporate these APIs, and I hope they prove useful to you.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To fetch Pokémon information from the PokeAPI,
+you can use the following endpoint: `https://pokeapi.co/api/v2/pokemon?limit=1&offset=1`,
+where `<limit>` determines the number of Pokémon you want to retrieve.
+By specifying the limit, you can control how many Pokémon are fetched from the API.
+Each Pokémon will come with detailed information like this one :
+
+```
+{
+abilities:(2) [{…}, {…}]
+base_experience:64
+forms:[{…}]
+game_indices:(20) [{…}, {…}, {…} ...]
+height:7
+held_items:[]
+id:1
+is_default:true
+location_area_encounters:"https://pokeapi.co/api/v2/pokemon/1/encounters"
+moves:(
+
+(80) [{…},{…} ....]
+    name:"bulbasaur"
+    order:1
+    past_types:[]
+    species:{
+    name: 'bulbasaur',
+    url: 'https://pokeapi.co/api/v2/pokemon-species/1/'
+    }
+    sprites:{
+    back_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png',
+    back_female: null,
+    back_shiny:'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png',
+    back_shiny_female: null,
+    front_default:'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png', …
+    }
+    stats:(6) [{…}, {…}, {…}, {…}, {…}, {…}]
+    types:(2) [{…}, {…}]weight:69
+    }
+```
+
+The API endpoint `https://pokeapi.co/api/v2/type` returns an object with properties such as `count` (total count of
+Pokémon types), `next` (next page URL), `previous` (previous page URL), and `results` (an array of Pokémon types with
+their respective names and URLs).
+
+```
+{
+count:20
+next:null
+previous:null
+results:Array(20)
+0:{name: 'normal', url: 'https://pokeapi.co/api/v2/type/1/'}:
+1{name: 'fighting', url: 'https://pokeapi.co/api/v2/type/2/'}
+2: {name: 'flying', url: 'https://pokeapi.co/api/v2/type/3/'}
+3: {name: 'poison', url: 'https://pokeapi.co/api/v2/type/4/'}
+4: {name: 'ground', url: 'https://pokeapi.co/api/v2/type/5/'}
+5: {name: 'rock', url: 'https://pokeapi.co/api/v2/type/6/'}
+6: {name: 'bug', url: 'https://pokeapi.co/api/v2/type/7/'}
+7: {name: 'ghost', url: 'https://pokeapi.co/api/v2/type/8/'}
+8: {name: 'steel', url: 'https://pokeapi.co/api/v2/type/9/'}
+9: {name: 'fire', url: 'https://pokeapi.co/api/v2/type/10/'}
+10: {name: 'water', url: 'https://pokeapi.co/api/v2/type/11/'}
+11: {name: 'grass', url: 'https://pokeapi.co/api/v2/type/12/'}
+12: {name: 'electric', url: 'https://pokeapi.co/api/v2/type/13/'}
+13: {name: 'psychic', url: 'https://pokeapi.co/api/v2/type/14/'}
+14: {name: 'ice', url: 'https://pokeapi.co/api/v2/type/15/'}
+15: {name: 'dragon', url: 'https://pokeapi.co/api/v2/type/16/'}
+16: {name: 'dark', url: 'https://pokeapi.co/api/v2/type/17/'}
+17: {name: 'fairy', url: 'https://pokeapi.co/api/v2/type/18/'}
+18: {name: 'unknown', url: 'https://pokeapi.co/api/v2/type/10001/'}
+19: {name: 'shadow', url: 'https://pokeapi.co/api/v2/type/10002/'}
+}
+```

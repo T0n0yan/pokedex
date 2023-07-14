@@ -10,6 +10,9 @@ export interface initialRootState {
     currentPage: number;
     nextURL: string;
     previousURL: string;
+    evolutionChain: EvolutionChain | null;
+    total:number
+
 }
 export interface Pokemon {
     name: string;
@@ -158,4 +161,74 @@ export interface SinglePokemonData {
     pokedex_numbers: PokedexNumber[]
     shape: Pokemon
     varieties: Variety[]
+}
+
+
+export interface EvolutionChain {
+    id: number;
+    baby_trigger_item: NamedAPIResource<Item> | null;
+    chain: ChainLink;
+}
+
+export interface NamedAPIResource<T> {
+    name: string;
+    url: string;
+}
+
+export interface ChainLink {
+    is_baby: boolean;
+    species: NamedAPIResource<PokemonSpecies>;
+    evolution_details: EvolutionDetail[];
+    evolves_to: ChainLink[];
+}
+
+export interface EvolutionDetail {
+    item: NamedAPIResource<Item> | null;
+    trigger: NamedAPIResource<EvolutionTrigger>;
+    gender: number | null;
+    held_item: NamedAPIResource<Item> | null;
+    known_move: NamedAPIResource<Move> | null;
+    known_move_type: NamedAPIResource<Type> | null;
+    location: NamedAPIResource<Location> | null;
+    min_level: number | null;
+    min_happiness: number | null;
+    min_beauty: number | null;
+    min_affection: number | null;
+    needs_overworld_rain: boolean;
+    party_species: NamedAPIResource<PokemonSpecies> | null;
+    party_type: NamedAPIResource<Type> | null;
+    relative_physical_stats: number | null;
+    time_of_day: string;
+    trade_species: NamedAPIResource<PokemonSpecies> | null;
+    turn_upside_down: boolean;
+}
+
+export interface Item {
+    name: string;
+    url: string;
+}
+
+export interface EvolutionTrigger {
+    name: string;
+    url: string;
+}
+
+export interface PokemonSpecies {
+    name: string;
+    url: string;
+}
+
+export interface Move {
+    name: string;
+    url: string;
+}
+
+export interface Type {
+    name: string;
+    url: string;
+}
+
+export interface Location {
+    name: string;
+    url: string;
 }

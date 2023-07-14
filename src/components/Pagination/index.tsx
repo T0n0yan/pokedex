@@ -1,22 +1,24 @@
-import React, { FC, useEffect } from "react";
-import { Pagination } from 'antd';
+import React, { FC} from "react";
+import { Pagination } from "antd";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { changePage, fetchAllPokemons } from "store/reducers/pokemonSlice";
+import styles from './Pagination.module.scss'
+
 
 export type TPagination = {
-  page: number | null;
-  perPage: string
+  total: number | null;
+  perPage: string;
 };
 
-const CustomPagination: FC<TPagination> = ({ page, perPage }) => {
-  const nextPage = useAppSelector(state => state.pokemonReducer.nextURL)
-  const previousPage = useAppSelector(state => state.pokemonReducer.previousURL)
-  const currentPage = useAppSelector(state => state.pokemonReducer.currentPage)
+const CustomPagination: FC<TPagination> = ({ total, perPage }) => {
+  const nextPage = useAppSelector(state => state.pokemonReducer.nextURL);
+  const previousPage = useAppSelector(state => state.pokemonReducer.previousURL);
+  const currentPage = useAppSelector(state => state.pokemonReducer.currentPage);
+
+  const dispatch = useAppDispatch();
 
 
-  const dispatch = useAppDispatch()
-
-  if (page === null) {
+  if (total === null) {
     return null;
   }
 
@@ -24,34 +26,31 @@ const CustomPagination: FC<TPagination> = ({ page, perPage }) => {
     dispatch(changePage(value));
     if (value - currentPage === 1) {
       handelNextPgae();
-      console.log(currentPage, 'next')
     } else if (currentPage - value === 1) {
       handlePreviousPage();
-      console.log(currentPage, 'prev')
     }
-    else {
-      await dispatch(fetchAllPokemons({ perPage }))
-      console.log(currentPage, 'xary')
+    else{
+      await dispatch(fetchAllPokemons({ perPage}))
     }
 
   };
   const handelNextPgae = () => {
-    dispatch(fetchAllPokemons({ perPage, fetchURl: nextPage }))
-  }
+    dispatch(fetchAllPokemons({ perPage, fetchURl: nextPage }));
+  };
   const handlePreviousPage = () => {
-    dispatch(fetchAllPokemons({ perPage, fetchURl: previousPage }))
-  }
+    dispatch(fetchAllPokemons({ perPage, fetchURl: previousPage }));
+  };
 
   return (
-    <Pagination
-      defaultCurrent={1}
-      total={page}
-      pageSize={+perPage}
-      onChange={handleChangePerPgae}
-      current={currentPage}
-      showSizeChanger={false}
-      style={{ marginTop: '20px', textAlign: 'end' }}
-    />
+      <Pagination
+          defaultCurrent={1}
+          pageSize={+perPage}
+          total={total}
+          onChange={handleChangePerPgae}
+          current={currentPage}
+          showSizeChanger={false}
+          style={{ marginTop: "20px", textAlign: "end" }}
+      />
   );
 };
 
