@@ -1,28 +1,37 @@
-import React, { FC } from 'react';
-import { Select } from 'antd';
+import { Select, Space } from 'antd';
+import { FC, useState } from 'react';
+import { PokemonData } from 'store/reducers/types';
 import styles from './Selet_type.module.scss';
-interface ISelectType {
-  type: string;
+
+interface ITypes {
+  typesList: PokemonData | null;
+  change: (value: string) => void;
 }
 
-const handleChange = (value: string) => {
-  console.log(`selected ${value}`);
-};
-const SelectType: FC<ISelectType> = () => {
+const SelectType: FC<ITypes> = ({ typesList, change }) => {
+  const [selectedType, setSelectedType] = useState('allTypes');
+
+  const handleSelectChange = (value: string) => {
+    setSelectedType(value);
+    change(value);
+  };
+  const options = [
+    { value: 'allTypes', label: 'All Types' },
+    ...(typesList?.results || [])
+      .filter(type => type.name !== 'unknown')
+      .map(type => ({
+        value: type.name,
+        label: type.name.charAt(0).toUpperCase() + type.name.slice(1),
+      })),
+  ];
   return (
-    <div className={styles.type_input}>
+    <div className={styles.container}>
       <Select
-        defaultValue="All Types"
-        style={{
-          width: 120,
-        }}
-        onChange={handleChange}
-        options={[
-          {
-            value: 'All Types',
-            label: 'All Types',
-          },
-        ]}
+        defaultValue="allTypes"
+        options={options}
+        value={selectedType}
+        onChange={change}
+        className={styles.select}
       />
     </div>
   );

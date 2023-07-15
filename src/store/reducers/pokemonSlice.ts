@@ -10,14 +10,14 @@ const initialState: initialRootState = {
   currentPage: 1,
   singlePokemon: null,
   speciesUrl: null,
+  typesList: null,
+  evolutionChain: null,
 
   pokemonInfo: null,
-  typesList: null,
   uniqueIdPokemon: null,
 
   nextURL: '',
   previousURL: '',
-  evolutionChain: null,
   total: 0,
 };
 
@@ -59,6 +59,14 @@ export const fetchSpeciesData = createAsyncThunk('pokemon/fetchSpeciesData', asy
     console.error('Error Species url not exist', err);
   }
 });
+export const fetchAlltypes = createAsyncThunk('pokemons/type', async () => {
+  try {
+    const response = await axios.get(`https://pokeapi.co/api/v2/type`);
+    return response.data;
+  } catch (err) {
+    console.error('Types error ', err);
+  }
+});
 const pokemonSlice = createSlice({
   name: 'Pokemon',
   initialState,
@@ -84,6 +92,7 @@ const pokemonSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+
       .addCase(fetchSinglePokemonById.pending, state => {
         state.loading = true;
         state.error = undefined;
@@ -109,6 +118,19 @@ const pokemonSlice = createSlice({
       .addCase(fetchSpeciesData.rejected, (state, actions) => {
         state.loading = false;
         state.error = actions.error.message;
+      })
+
+      .addCase(fetchAlltypes.pending, state => {
+        state.loading = true;
+        state.error = undefined;
+      })
+      .addCase(fetchAlltypes.fulfilled, (state, action) => {
+        state.loading = false;
+        state.typesList = action.payload;
+      })
+      .addCase(fetchAlltypes.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

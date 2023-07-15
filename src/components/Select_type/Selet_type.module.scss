@@ -1,8 +1,21 @@
-@import 'src/styles/mixin';
-.type_input {
-  margin: 0 15px;
-
+@import 'src/styles/mixin.scss';
+.container {
+  width  : 15%;
+  margin : 0 20px;
+  @include screen-max-width-991 {
+    width  : 30%;
+    margin : 0 15px;
+  }
   @include screen-max-width-767 {
-    margin: 10px 0;
+    width  : 100%;
+    margin : 20px 0;
+  }
+  @include screen-max-width-576 {
+    width  : 100%;
+    margin : 20px 0;
+  }
+
+  .select {
+    width : 100% !important;
   }
 }
