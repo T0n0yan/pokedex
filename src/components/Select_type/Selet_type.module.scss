@@ -1,0 +1,8 @@
+@import 'src/styles/mixin';
+.type_input {
+  margin : 0 15px;
+
+  @include screen-max-width-767 {
+    margin : 10px 0;
+  }
+}

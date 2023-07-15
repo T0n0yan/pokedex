@@ -18,3 +18,45 @@
 .loader {
   margin : 50px auto;
 }
+.inputs_container {
+  width           : 100%;
+  display         : flex;
+  align-self      : center;
+  justify-content : space-between;
+  @include screen-max-width-767 {
+    flex-direction : column;
+    border         : 1px solid red;
+  }
+
+  .filters {
+    display : flex;
+    @include screen-max-width-767 {
+      flex-direction  : column;
+      align-items     : start;
+      justify-content : center;
+    }
+
+    .search_input {
+      margin : 0;
+    }
+
+    .type_input {
+      @include screen-max-width-767 {
+        margin : 10px 0;
+      }
+    }
+  }
+
+  .per_page {
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    @include screen-max-width-767 {
+      justify-content : start;
+    }
+  }
+
+  .per_page_text {
+    margin : 0 5px;
+  }
+}
