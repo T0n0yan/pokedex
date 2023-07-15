@@ -1,20 +1,46 @@
 @import 'src/styles/mixin';
+@import 'src/styles/color';
 
 .evolution_container {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 30px;
-  @include screen-max-width-576 {
-    flex-direction: column;
-    margin: 0;
+  display         : flex;
+  justify-content : space-evenly;
+  margin-top      : 30px;
+  @include screen-max-width-767 {
+	flex-direction : column;
+
+	margin         : 0 auto;
   }
 
   .evolution_item {
-    width: 30%;
-    @include screen-max-width-576 {
-      width: 100%;
-      align-self: center;
-      margin: 5px 0;
-    }
+	width       : 30%;
+	display     : flex;
+	align-items : center;
+	@include screen-max-width-767 {
+	  flex-direction : column;
+	  align-items    : center;
+
+	  width          : 100%;
+	  align-self     : center;
+	  margin         : 5px 0;
+	}
+
+	.arrow_cont {
+	  .arrow {
+		font-size   : 50px;
+		color       : $main_teal;
+		font-weight : bold;
+		@include screen-max-width-767 {
+		  font-size : 50px;
+		  margin    : 25px 0;
+		  transform : rotate(90deg);
+		}
+	  }
+	}
+
+	&:last-child {
+	  .arrow_cont {
+		visibility : hidden;
+	  }
+	}
   }
 }

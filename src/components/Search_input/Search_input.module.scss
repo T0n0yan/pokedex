@@ -6,13 +6,13 @@
 .input {
   width : 40%;
   @include screen-max-width-991 {
-    width : 33%;
+	width : 33%;
   }
   @include screen-max-width-767 {
-    width : 100%;
+	width : 100%;
   }
   @include screen-max-width-576 {
-    margin : 0;
+	margin : 0;
   }
 }
 
