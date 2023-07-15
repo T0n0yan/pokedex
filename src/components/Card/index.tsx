@@ -5,14 +5,20 @@ import styles from './Cards.module.scss';
 import { PokemonInfo } from 'store/reducers/types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { PropagateLoader } from 'react-spinners';
 
 const CardComponent: FC<TCardProps> = ({ name, url }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [src, setSrc] = useState('');
+
   const [pokemonInfo, setpokemonInfo] = useState<PokemonInfo | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(url);
+        const imageUrl = data?.sprites.other?.['official-artwork'].front_default;
         setpokemonInfo(data);
+        setSrc(imageUrl);
       } catch (error) {
         console.log(error);
       }
@@ -20,6 +26,13 @@ const CardComponent: FC<TCardProps> = ({ name, url }) => {
     fetchData();
   }, [name, url]);
 
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setLoading(true);
+    };
+    img.src = src;
+  }, [src]);
   const capitalizedTitle = name.charAt(0).toUpperCase() + name.slice(1);
 
   return (
@@ -30,11 +43,13 @@ const CardComponent: FC<TCardProps> = ({ name, url }) => {
           className={styles.card}
           cover={
             <div className={styles.pokemon_img_container}>
-              <img
-                className={styles.pokemon_img}
-                alt="pokemon Picture"
-                src={pokemonInfo.sprites.other?.['official-artwork'].front_default}
-              />
+              {!loading ? (
+                <div>
+                  <PropagateLoader color="#397f84" size={10} />
+                </div>
+              ) : (
+                <img className={styles.pokemon_img} alt="pokemon Picture" src={src} onLoad={() => setLoading(true)} />
+              )}
             </div>
           }
         >

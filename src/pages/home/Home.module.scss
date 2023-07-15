@@ -4,58 +4,58 @@
 @import 'src/styles/mixin.scss';
 
 .title {
-  font-family : $main_font;
-  color       : $main_teal;
-  font-size   : $font-size-48;
-  text-align  : center;
-  margin      : 20px 0 60px 0;
+  font-family: $main_font;
+  color: $main_teal;
+  font-size: $font-size-48;
+  text-align: center;
+  margin: 20px 0 60px 0;
 }
 .container {
-  display         : flex;
-  flex-wrap       : wrap;
-  justify-content : space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .loader {
-  margin : 50px auto;
+  margin: 50px auto;
 }
 .inputs_container {
-  width           : 100%;
-  display         : flex;
-  align-self      : center;
-  justify-content : space-between;
+  width: 100%;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
   @include screen-max-width-767 {
-    flex-direction : column;
+    flex-direction: column;
   }
 
   .filters {
-    display : flex;
+    display: flex;
     @include screen-max-width-767 {
-      flex-direction  : column;
-      align-items     : start;
-      justify-content : center;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
     }
 
     .search_input {
-      margin : 0;
+      margin: 0;
     }
 
     .type_input {
       @include screen-max-width-767 {
-        margin : 10px 0;
+        margin: 10px 0;
       }
     }
   }
 
   .per_page {
-    display         : flex;
-    align-items     : center;
-    justify-content : center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include screen-max-width-767 {
-      justify-content : start;
+      justify-content: start;
     }
   }
 
   .per_page_text {
-    margin : 0 5px;
+    margin: 0 5px;
   }
 }
