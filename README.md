@@ -229,7 +229,7 @@ results:Array(20)
 
 ```
 
-### I have already done the research and incorporated these APIs into the project, and we hope they prove useful to you.
+### I have already done the research and incorporated these APIs into the project, and I hope they prove useful to you.
 
 Feel free to explore the provided APIs to access additional data or enhance your Pokedex application further.
 
