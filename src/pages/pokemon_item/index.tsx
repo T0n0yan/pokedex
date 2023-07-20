@@ -3,9 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
 import { fetchSinglePokemonById, fetchSpeciesData } from 'store/reducers/pokemonSlice';
 import PageWrapper from 'layout/Page_wrapper';
-import styles from './Pokemon_types.module.scss';
 import Stats from 'components/Stats';
 import Evolution from 'components/Evolution';
+
+import styles from './Pokemon_types.module.scss';
 
 const PokemonItem: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -87,7 +88,13 @@ const PokemonItem: FC = () => {
                 <div className={styles.pokemon_each_info}>
                   <p className={styles.abilities_name}>Gender</p>
                   {spacesUrlData.gender_rate >= 1 ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '100%',
+                      }}
+                    >
                       <span>male</span>
                       <span>female</span>
                     </div>

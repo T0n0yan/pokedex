@@ -1,12 +1,14 @@
 import { Pokemon, SinglePokemonData } from 'store/reducers/types';
 import React, { FC, useEffect, useState } from 'react';
 import { RightOutlined } from '@ant-design/icons';
-import styles from './Evolution.module.scss';
 import CardComponent from 'components/Card';
 import axios from 'axios';
 
+import styles from './Evolution.module.scss';
+
 type TEvolutionProps = {
-  url?: string; // Species ID to get its evolved form data
+  name?: string;
+  url?: string;
 };
 
 const Evolution: FC<TEvolutionProps> = ({ url }) => {
@@ -26,6 +28,7 @@ const Evolution: FC<TEvolutionProps> = ({ url }) => {
               evolution.evolves_to.map((subEvolution: any) => subEvolution.species)
             ),
           ];
+          console.log('chain.spices', chain.species);
           const additionalSpeciesData = await Promise.all(
             species.map(async pokemon => {
               const additionalResponse = await axios.get(pokemon.url);

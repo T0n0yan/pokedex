@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Card } from 'antd';
-import styles from './Empty_Loading_componennt.module.scss';
 import { PropagateLoader } from 'react-spinners';
+
+import styles from './Empty_Loading_componennt.module.scss';
 
 const EmptyLoadingCard: FC = () => {
   return (

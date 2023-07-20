@@ -1,6 +1,7 @@
 import { Select } from 'antd';
-import styles from './Show_per_page.module.scss';
 import { FC } from 'react';
+
+import styles from './Show_per_page.module.scss';
 
 interface IShowPerPage {
   sortChangeOrder: (value: string) => void;

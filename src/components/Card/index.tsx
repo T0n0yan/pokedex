@@ -1,11 +1,12 @@
-import { FC, useEffect, useState } from 'react';
-import { Card } from 'antd';
-import type { TCardProps } from './type';
-import styles from './Cards.module.scss';
 import { PokemonInfo } from 'store/reducers/types';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { PropagateLoader } from 'react-spinners';
+import { FC, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Card } from 'antd';
+import axios from 'axios';
+
+import styles from './Cards.module.scss';
+import type { TCardProps } from './type';
 
 const CardComponent: FC<TCardProps> = ({ name, url }) => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -44,7 +45,7 @@ const CardComponent: FC<TCardProps> = ({ name, url }) => {
           cover={
             <div className={styles.pokemon_img_container}>
               {!loading ? (
-                <div>
+                <div className={styles.loader_cont}>
                   <PropagateLoader color="#397f84" size={10} />
                 </div>
               ) : (

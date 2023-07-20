@@ -10,8 +10,9 @@ import SelectType from 'components/Select_type';
 import Pagination from 'components/Pagination';
 import PageWrapper from 'layout/Page_wrapper';
 import CardComponent from 'components/Card';
-import styles from './Home.module.scss';
 import { RootState } from 'store';
+
+import styles from './Home.module.scss';
 
 const Home = () => {
   const dispatch = useAppDispatch();

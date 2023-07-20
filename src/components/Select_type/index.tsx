@@ -1,6 +1,7 @@
-import { Select, Space } from 'antd';
+import { Select } from 'antd';
 import { FC, useState } from 'react';
 import { PokemonData } from 'store/reducers/types';
+
 import styles from './Selet_type.module.scss';
 
 interface ITypes {
@@ -30,7 +31,7 @@ const SelectType: FC<ITypes> = ({ typesList, change }) => {
         defaultValue="allTypes"
         options={options}
         value={selectedType}
-        onChange={change}
+        onChange={handleSelectChange}
         className={styles.select}
       />
     </div>

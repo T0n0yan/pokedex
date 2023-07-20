@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Select } from 'antd';
+
 import styles from './Filtered_input.module.scss';
 
 export type TFilteredInput = {

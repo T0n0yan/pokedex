@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { initialRootState } from './types';
 import { RootState } from 'store';
 import axios from 'axios';
+
+import { initialRootState } from './types';
 
 const initialState: initialRootState = {
   pokemonsData: null,
@@ -37,7 +38,11 @@ export const fetchAllPokemon = createAsyncThunk('pokemon/fetchAll', async (data:
     const response = await axios.get(fetchURl);
     const nextPageURL = response.data.next;
     const previousPageURL = response.data.previous;
-    return { response: response.data, next: nextPageURL, prev: previousPageURL };
+    return {
+      response: response.data,
+      next: nextPageURL,
+      prev: previousPageURL,
+    };
   } catch (err) {
     console.error('Error', err);
     throw new Error(`Error with Pokemon's  data`);

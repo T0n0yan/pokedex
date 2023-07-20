@@ -2,35 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
+    <link href="%PUBLIC_URL%/favicon.ico" rel="icon" />
+    <link href="%PUBLIC_URL%/logo16.png" rel="icon" sizes="16x16" type="image/png" />
+    <link href="%PUBLIC_URL%/logo24.png" rel="icon" sizes="24x24" type="image/png" />
+    <link href="%PUBLIC_URL%/logo32.png" rel="icon" sizes="32x32" type="image/png" />
     <link href="%PUBLIC_URL%/logo128.png" rel="apple-touch-icon" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link href="%PUBLIC_URL%/manifest.json" rel="manifest" />
     <title>Pokédex</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const icons = [
-          { src: 'favicon.ico', sizes: '64x64 32x32 24x24 16x16', type: 'image/x-icon' },
-          { src: 'logo16.png', type: 'image/png', sizes: '16x16' },
-          { src: 'logo24.png', type: 'image/png', sizes: '24x24' },
-          { src: 'logo32.png', type: 'image/png', sizes: '32x32' },
-        ];
-
-        icons.forEach(function (icon) {
-          const link = document.createElement('link');
-          link.rel = 'icon';
-          link.href = '%PUBLIC_URL%/' + icon.src;
-          link.sizes = icon.sizes;
-          link.type = icon.type;
-          document.head.appendChild(link);
-        });
-      });
-    </script>
   </body>
 </html>

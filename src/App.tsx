@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import PokemonItem from 'pages/pokemon_item';
-import Home from './pages/home';
 import React from 'react';
+
+import Home from './pages/home';
 
 function App() {
   return (

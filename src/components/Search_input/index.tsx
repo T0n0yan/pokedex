@@ -1,7 +1,8 @@
+import { SearchOutlined } from '@ant-design/icons';
 import React, { FC } from 'react';
 import { Input } from 'antd';
+
 import styles from './Search_input.module.scss';
-import { SearchOutlined } from '@ant-design/icons';
 
 interface ISearchInput {
   value: string;
