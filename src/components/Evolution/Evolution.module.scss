@@ -26,9 +26,10 @@
 
     .arrow_cont {
       .arrow {
-        font-size   : 50px;
-        color       : $main_teal;
-        font-weight : bold;
+        font-size    : 50px;
+        padding-left : 20px;
+        color        : $main_teal;
+        font-weight  : bold;
         @include screen-max-width-767 {
           font-size : 50px;
           margin    : 25px 0;
