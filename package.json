@@ -28,14 +28,91 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '**/*.{js,ts,jsx,tsx}' --fix",
+    "lint": "eslint .",
     "format": "prettier --write ."
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "import",
+      "react",
+      "react-hooks",
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "@typescript-eslint/no-var-requires": "off",
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            [
+              "builtin",
+              "external"
+            ],
+            "internal",
+            [
+              "parent",
+              "sibling",
+              "index"
+            ]
+          ],
+          "newlines-between": "always"
+        }
+      ],
+      "no-console": [
+        "warn",
+        {
+          "allow": [
+            "warn",
+            "error",
+            "log"
+          ]
+        }
+      ],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 2,
+          "maxBOF": 1
+        }
+      ],
+      "prettier/prettier": "error",
+      "react-hooks/exhaustive-deps": "off",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".tsx",
+            ".jsx"
+          ]
+        }
+      ],
+      "react/react-in-jsx-scope": "off"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -65,5 +142,14 @@
     "sass-resources-loader": "^2.2.5",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.1"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5"
   }
 }

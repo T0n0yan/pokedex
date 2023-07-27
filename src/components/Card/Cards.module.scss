@@ -3,90 +3,90 @@
 @import 'src/styles/mixin';
 
 .pokemonItem {
-  width: 18%;
-  margin: 10px 0;
-  text-decoration: none;
+  width           : 18%;
+  margin          : 10px 0;
+  text-decoration : none;
   @include screen-max-width-1024 {
-    width: 24%;
-    padding: 10px;
+	width   : 24%;
+	padding : 10px;
   }
   @include screen-max-width-767 {
-    width: 32%;
+	width : 32%;
   }
   @include screen-max-width-576 {
-    width: 48%;
+	width : 48%;
   }
   @include screen-max-width-440 {
-    width: 100%;
+	width : 100%;
   }
 
   .card {
-    width: 100%;
-    font-family: $main_font;
-    padding: 15px;
-    border-radius: 0;
+	width         : 100%;
+	font-family   : $main_font;
+	padding       : 15px;
+	border-radius : 0;
 
-    &:hover {
-      animation-name: pokemonItem;
-      animation-duration: 0.3s;
-    }
+	&:hover {
+	  animation-name     : pokemonItem;
+	  animation-duration : 0.3s;
+	}
 
-    .pokemon_img_container {
-      background      : $image_background;
-      display         : flex;
-      justify-content : center;
-      border-radius   : 10px !important;
+	.pokemon_img_container {
+	  background      : $image_background;
+	  display         : flex;
+	  justify-content : center;
+	  border-radius   : 10px !important;
 
-      .loader_cont {
-        width            : 100%;
-        height           : 150px;
-        background-color : $image_background;
-        border-radius    : 15px;
-        display          : flex;
-        justify-content  : center;
-        align-items      : center;
-      }
+	  .loader_cont {
+		width            : 100%;
+		height           : 150px;
+		background-color : $image_background;
+		border-radius    : 15px;
+		display          : flex;
+		justify-content  : center;
+		align-items      : center;
+	  }
 
-      .pokemon_img {
-        width  : 100%;
-        height : 100%;
-        @include screen-max-width-767 {
-          max-width : 300px;
-          width     : 100%;
-        }
-        @include screen-max-width-576 {
-          max-width : 190px;
-          width     : 100%;
-        }
-        @include screen-max-width-440 {
-          max-width : 200px;
-          width     : 100%;
-        }
-      }
-    }
+	  .pokemon_img {
+		width  : 100%;
+		height : 100%;
+		@include screen-max-width-767 {
+		  max-width : 300px;
+		  width     : 100%;
+		}
+		@include screen-max-width-576 {
+		  max-width : 190px;
+		  width     : 100%;
+		}
+		@include screen-max-width-440 {
+		  max-width : 200px;
+		  width     : 100%;
+		}
+	  }
+	}
 
-    .pokemon_name {
-      color: $title_dark_blue;
-    }
+	.pokemon_name {
+	  color : $title_dark_blue;
+	}
 
-    .id {
-      color: $index_grey;
-    }
+	.id {
+	  color : $index_grey;
+	}
 
-    .pokemon_type {
-      color: $type_grey;
-    }
+	.pokemon_type {
+	  color : $type_grey;
+	}
   }
 }
 
 @keyframes pokemonItem {
   0% {
-    transform: translateY(0px);
+	transform : translateY(0px);
   }
   50% {
-    transform: translateY(-5px);
+	transform : translateY(-5px);
   }
   100% {
-    transform: translateY(0px);
+	transform : translateY(0px);
   }
 }

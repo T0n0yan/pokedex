@@ -17,10 +17,7 @@ export interface Pokemon {
   name: string;
   url: string;
 }
-export interface PokemonUniqeType {
-  pokemon: Pokemon;
-  slot: number;
-}
+
 export interface PokemonUrl {
   url: string;
 }
@@ -174,53 +171,28 @@ export interface NamedAPIResource<T> {
 
 export interface ChainLink {
   is_baby: boolean;
-  species: NamedAPIResource<PokemonSpecies>;
+  species: NamedAPIResource<Pokemon>;
   evolution_details: EvolutionDetail[];
   evolves_to: ChainLink[];
 }
 
 export interface EvolutionDetail {
   item: NamedAPIResource<Pokemon> | null;
-  trigger: NamedAPIResource<EvolutionTrigger>;
+  trigger: NamedAPIResource<Pokemon>;
   gender: number | null;
   held_item: NamedAPIResource<Pokemon> | null;
-  known_move: NamedAPIResource<Move> | null;
-  known_move_type: NamedAPIResource<Type> | null;
-  location: NamedAPIResource<Location> | null;
+  known_move: NamedAPIResource<Pokemon> | null;
+  known_move_type: NamedAPIResource<Pokemon> | null;
+  location: NamedAPIResource<Pokemon> | null;
   min_level: number | null;
   min_happiness: number | null;
   min_beauty: number | null;
   min_affection: number | null;
   needs_overworld_rain: boolean;
-  party_species: NamedAPIResource<PokemonSpecies> | null;
-  party_type: NamedAPIResource<Type> | null;
+  party_species: NamedAPIResource<Pokemon> | null;
+  party_type: NamedAPIResource<Pokemon> | null;
   relative_physical_stats: number | null;
   time_of_day: string;
-  trade_species: NamedAPIResource<PokemonSpecies> | null;
+  trade_species: NamedAPIResource<Pokemon> | null;
   turn_upside_down: boolean;
-}
-
-export interface EvolutionTrigger {
-  name: string;
-  url: string;
-}
-
-export interface PokemonSpecies {
-  name: string;
-  url: string;
-}
-
-export interface Move {
-  name: string;
-  url: string;
-}
-
-export interface Type {
-  name: string;
-  url: string;
-}
-
-export interface Location {
-  name: string;
-  url: string;
 }

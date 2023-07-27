@@ -18,41 +18,20 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "import",
-    "react",
-    "react-hooks",
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["import", "react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
     "import/order": [
       "error",
       {
-        "groups": [
-          [
-            "builtin",
-            "external"
-          ],
-          "internal",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
+        "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]],
         "newlines-between": "always"
       }
     ],
     "no-console": [
       "warn",
       {
-        "allow": [
-          "warn",
-          "error",
-          "log"
-        ]
+        "allow": ["warn", "error", "log"]
       }
     ],
     "no-multiple-empty-lines": [
@@ -67,10 +46,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".tsx",
-          ".jsx"
-        ]
+        "extensions": [".tsx", ".jsx"]
       }
     ],
     "react/react-in-jsx-scope": "off"
